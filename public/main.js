@@ -33,7 +33,7 @@ function sendMessage() {
 
         $('#conversation_input').value = '';
 
-        fetch('TODO', {
+        fetch('https://sendmessage-55nudhlqzq-uc.a.run.app', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
