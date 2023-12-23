@@ -47,10 +47,6 @@ body {
     margin-top: 0px;
 }
 
-.message_entry:last-child {
-    margin-bottom: 5px;
-}
-
 .message_entry.sent_message {
     background-color: #e3f2fd;
     border-radius: 5px; /* Curved corners */
