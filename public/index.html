@@ -21,7 +21,7 @@
           </select>
         </div>
         <div class="conversation_controls_bottom">
-          <textarea id="conversation_input" placeholder="Type your message here..."></textarea>
+          <textarea id="conversation_input" placeholder="Type your message here..." onkeypress="if(event.keyCode==13){sendMessage()}"></textarea>
           <button id="conversation_send" onclick="sendMessage()">Send</button>
         </div>
       </div>
