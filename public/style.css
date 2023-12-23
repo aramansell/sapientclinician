@@ -44,7 +44,7 @@ body {
 }
 
 .message_entry:first-child {
-    margin-top: 5px;
+    margin-top: 0px;
 }
 
 .message_entry:last-child {

@@ -8,18 +8,15 @@
   </head>
   <body>
     <div class="screen" id="conversation_screen">
-      <div class="conversation_history">
-        <div class="message_entry">
-          <div class="message_from">Patient</div>
-          <div class="message_text">Hello, I have a question about my test results.</div>
-        </div>
+      <div class="conversation_history" id="history">
+
       </div>
       <div class="conversation_controls">
         <div class="conversation_controls_top">
           <select name="people" id="people">
-            <option value="patient">Patient</option>
-            <option value="clinician">Clinician</option>
-            <option value="lab">Lab</option>
+            <option value="Patient">Patient</option>
+            <option value="Clinician">Clinician</option>
+            <option value="Lab">Lab</option>
           </select>
         </div>
         <div class="conversation_controls_bottom">
@@ -29,5 +26,6 @@
       </div>
     </div>
     <script src="main.js"></script>
+    <script>startConversation();</script>
   </body>
 </html>
