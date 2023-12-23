@@ -21,6 +21,7 @@ function addMessageToHistory(from, message, to) {
             <div class="message_from">${escapeHTML(from)}</div>
             <div class="message_text">${escapeHTML(message)}</div>
         </div>`);
+    $('#history').scrollTop = $('#history').scrollHeight;
     message_history.push({from: from, message: message, to: to});
 }
 
