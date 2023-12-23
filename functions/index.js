@@ -41,7 +41,7 @@ exports.sendMessage = onRequest({ secrets: ["OPENAI_API_KEY"] }, (request, respo
 
   function validateArguments() {
     function validateMessageHistoryEntry(entry) {
-      return typeof entry == "object" && ["Patient", "Clinician", "Lab", "You"].includes(entry.from) && (entry.from == "You" ? ["Patient", "Clinician", "Lab"].includes(entry.to) : !entry.to) && typeof entry.message == "string" && entry.message.length > 0;
+      return typeof entry == "object" && ["Patient", "Clinician", "Lab", "You", "Update"].includes(entry.from) && (entry.from == "You" ? ["Patient", "Clinician", "Lab"].includes(entry.to) : !entry.to) && typeof entry.message == "string" && entry.message.length > 0;
     }
     return typeof message_history == "object" && Array.isArray(message_history) && message_history.length > 0 && message_history.every(validateMessageHistoryEntry);
   }
@@ -53,9 +53,15 @@ exports.sendMessage = onRequest({ secrets: ["OPENAI_API_KEY"] }, (request, respo
 
     function convertMessageHistoryToOpenAIFormat(message_history) {
       return [{ role: 'system', content: system_message }].concat(message_history.map(function (entry) {
-        if (entry.from == "You") {
+        if (entry.from == "You") 
+        {
           return { role: 'user', content: `[Message to ${entry.to}]\n\n`+entry.message };
-        } else {
+        } 
+        else if(entry.from == "Update")
+        {
+          return { role: 'user', content: `[Update message]\n\n`+entry.message };
+        }
+        else {
           return { role: 'assistant', content: entry.message };
         }
       }));

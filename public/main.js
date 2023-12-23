@@ -29,31 +29,38 @@ function sendMessage() {
     let message = $('#conversation_input').value;
     let person = $('#people').value;
 
-    if (message.length > 0) {
+    if (message.length > 0) 
+    {
         addMessageToHistory("You", message, person);
 
         $('#conversation_input').value = '';
 
-        fetch('https://sendmessage-55nudhlqzq-uc.a.run.app', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                message_history: message_history.slice(1) // Exclude user "System" message
-            })
-        }).then(response => {
-            if (response.ok) {
-                return response.json();
-            } else {
-                throw new Error(`HTTP error! Status: ${response.status}`);
-            }
-        }).then(response_json => {
-            addMessageToHistory(person, response_json.message);
-        }). catch(error => {
-            console.error(error);
-            alert('Something went wrong');
-        });
+        if(person != 'Notes')
+        {
+            fetch('https://sendmessage-55nudhlqzq-uc.a.run.app', 
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    message_history: message_history.slice(1).filter(msg => msg.to != 'Notes') // Exclude user "System" message
+
+                })
+            }).then(response => 
+                {
+                if (response.ok) {
+                    return response.json();
+                } else {
+                    throw new Error(`HTTP error! Status: ${response.status}`);
+                }
+            }).then(response_json => {
+                addMessageToHistory(person, response_json.message);
+            }). catch(error => {
+                console.error(error);
+                alert('Something went wrong');
+            });
+        }      
     }
 }
 
