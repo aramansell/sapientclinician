@@ -60,13 +60,13 @@ exports.sendMessage = onRequest({ secrets: ["OPENAI_API_KEY"] }, (request, respo
       model: 'gpt-4',
     }).then(function (result) {
 
-      response.send(JSON.stringify({ message: result.choices[0].message.content }));
+      response.status(200).send(JSON.stringify({ message: result.choices[0].message.content }));
 
     }).catch(function (error) {
       logger.error(error);
       response.status(500).send("Error 500: Internal Server Error");
     });
-    
+
 
   } else {
     response.status(400).send("Error 400: Bad Request");
