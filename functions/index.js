@@ -21,15 +21,21 @@ exports.sendMessage = onRequest({ secrets: ["OPENAI_API_KEY"] }, (request, respo
   response.set('Access-Control-Allow-Origin', "*");
 	response.set('Access-Control-Allow-Headers', "Origin, Content-Type, Accept, Referer, User-Agent, If-None-Match");
 
+  if (request.method == "OPTIONS") {
+    return response.status(200).send("200: OK");
+  }
+
   // Get request arguments
-  if (request.method == "POST" && req.body) {
+  if (request.method == "POST" && request.body) {
     try {
-      var message_history = req.body.message_history;
+      var message_history = request.body.message_history;
     }
     catch (error) {
+      logger.log("Failed to parse request body")
       return response.status(400).send("Error 400: Bad Request");
     }
   } else {
+    logger.log("Not post or no body")
     return response.status(400).send("Error 400: Bad Request");
   }
 
@@ -69,6 +75,8 @@ exports.sendMessage = onRequest({ secrets: ["OPENAI_API_KEY"] }, (request, respo
 
 
   } else {
+    logger.log("Arguments not valid")
+    logger.log(message_history)
     response.status(400).send("Error 400: Bad Request");
   }
 });
