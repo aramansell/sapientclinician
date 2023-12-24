@@ -140,10 +140,49 @@
 			<!--/ End Header Inner -->
 		</header>
 		<!-- End Header Area -->
-
 		
+		<!-- Breadcrumbs -->
+		<div class="breadcrumbs overlay">
+			<div class="container">
+				<div class="bread-inner">
+					<div class="row">
+						<div class="col-12">
+							<h2>Contact Us</h2>
+							<ul class="bread-list">
+								<li><a href="index.html">Home</a></li>
+								<li><i class="icofont-simple-right"></i></li>
+								<li class="active">Contact Us</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- End Breadcrumbs -->
 				
 		<!-- NEW PAGE CONTENT HERE-->
+
+        <div class="screen" id="conversation_screen">
+            <div class="conversation_history" id="history">
+      
+            </div>
+            <div class="conversation_controls">
+              <div class="conversation_controls_top">
+                <select name="people" id="people">
+                  <option value="Notes">Notes</option>
+                  <option value="Patient">Patient</option>
+                  <option value="Clinician">Clinician</option>
+                  <option value="Lab">Lab</option>
+                </select>
+              </div>
+              <div class="conversation_controls_bottom">
+                <textarea id="conversation_input" placeholder="Type your message here..."></textarea>
+                <button id="conversation_send" onclick="sendMessage()">Send</button>
+              </div>
+            </div>
+          </div>
+          <script src="main.js"></script>
+          <script>startConversation();</script>
 		
 		<!-- Footer Area -->
 		<footer id="footer" class="footer ">
