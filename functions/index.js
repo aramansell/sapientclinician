@@ -69,7 +69,7 @@ exports.sendMessage = onRequest({ secrets: ["OPENAI_API_KEY"] }, (request, respo
 
     openai.chat.completions.create({
       messages: convertMessageHistoryToOpenAIFormat(message_history),
-      model: 'gpt-4',
+      model: 'gpt-4-1106-preview',
     }).then(function (result) {
 
       response.status(200).send(JSON.stringify({ message: result.choices[0].message.content }));
@@ -85,4 +85,6 @@ exports.sendMessage = onRequest({ secrets: ["OPENAI_API_KEY"] }, (request, respo
     logger.log(message_history)
     response.status(400).send("Error 400: Bad Request");
   }
+
+  
 });
