@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Box Form</title>
+</head>
+<body>
+
+<h2>Create New Assessment</h2>
+
+
+<form id="textBoxForm">
+    <script src="form.js"></script>
+    <label for="patientName">Patient Name:</label><br>
+    <textarea id="patientName" name="textBox" rows="1" cols="50" required></textarea><br>
+    <label for="patientSymptoms">Patient Symptoms:</label><br>
+    <textarea id="patientSymptoms" name="textBox" rows="8" cols="100%" required></textarea><br>
+    <label for="patientHistory">Patient History:</label><br>
+    <textarea id="patientHistory" name="textBox" rows="8" cols="100%" required></textarea><br>
+    <label for="labResults">Lab Results:</label><br>
+    <textarea id="labResults" name="textBox" rows="8" cols="100%" required></textarea><br>
+    <input type="button" value="Submit" onclick="saveText()">
+</form>
+
+
+
+</body>
+</html>
