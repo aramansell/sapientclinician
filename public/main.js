@@ -1,3 +1,6 @@
+const fs = require('fs');
+var form_message = fs.readFileSync('form.txt', 'utf8');
+
 function $(selector) {
   return document.querySelector(selector);
 }
@@ -134,18 +137,18 @@ const questions = [
   //const nextQuestionButton = document.getElementById("next-question");
   //nextQuestionButton.addEventListener("click", () => {
     
-    function nextQuestion(){
-        
+function nextQuestion(){
     
-        // Check if we've reached the end of the array
-        if (currentQuestionIndex >= questions.length) {
-        currentQuestionIndex = 0; // Reset to the beginning
-        alert("You've completed the assessment, be sure to click Finish Exam before closing window!");
-        } else {
-        displayQuestion();
-        }
-        currentQuestionIndex++;
-  };
+
+    // Check if we've reached the end of the array
+    if (currentQuestionIndex >= questions.length) {
+    currentQuestionIndex = 0; // Reset to the beginning
+    alert("You've completed the assessment, be sure to click Finish Exam before closing window!");
+    } else {
+    displayQuestion();
+    }
+    currentQuestionIndex++;
+};
   
 
   
