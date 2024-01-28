@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Sapient Clinician</title>
+    <link rel="stylesheet" href="demostyle.css">
+  </head>
+  <body>
+    <div class="screen" id="conversation_screen">
+      <div class="conversation_history" id="history">
+
+      </div>
+      <div class="conversation_controls">
+        <div class="conversation_controls_top">
+          <select name="people" id="people">
+            <option value="Notes">Notes</option>
+            <option value="Patient">Patient</option>
+            <option value="Clinician">Clinician</option>
+            <option value="Lab">Lab</option>
+          </select>
+        </div>
+        <script src="main.js"></script>
+        <script>startConversation();</script>
+        <div class="conversation_controls_bottom">
+          <textarea id="conversation_input" placeholder="Type your message here..."></textarea>
+          <button id="conversation_send" onclick="sendMessage()">Send</button>
+          
+          <button id="download_history" onclick="downloadTxtFile()">Finish Exam</button>
+          
+        </div>
+      </div>
+    </div>
+   
+
+    
+  </body>
+</html>
