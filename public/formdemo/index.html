@@ -31,12 +31,14 @@
       <h2>Now let's create the assessment and plan of the visit:</h2>
       <div id="planContent"></div> 
     </div> 
-
+    <!--
     <div id="rubric">
       <h2>Finally, let's build the rubric:</h2>
       <div id="rubricContent"></div>
     </div>
+    -->
     <br><br>
+    
     <button type="submit">Submit</button>
   </form>
 
@@ -286,7 +288,7 @@ const followupQuestions = [
     { id: 'question2', type: 'text', placeholder: 'After 6 weeks of treatment...', label: 'Question 3' }
 ];
 createInputGroup(planElement, 'followUpQuestions', 'Questions following the scenerio:', followupQuestions);
-
+/*
 //create the story details
 const rubricElement = document.getElementById('rubricContent');
 
@@ -311,13 +313,13 @@ const rubricElement = document.getElementById('rubricContent');
 createCheckboxGroup(rubricElement, 'purpose', 'How did the learner do:', rubricPoints);
 
 createTextarea(rubricElement, 'create_your_own',  'Add in anything not mentioned above that is important for this scenario...', 'Create your own:', rows=5);
-
+*/
 function generateTxtFile() {
   const formData = new FormData(document.getElementById('scenarioForm'));
   let fileContent = '';
 
   for (const [key, value] of formData.entries()) {
-    fileContent += `${key}: ${value}\n`;
+    fileContent += `${key}: ${value}\n\n`;
   }
 
   const blob = new Blob([fileContent], { type: 'text/plain' });
