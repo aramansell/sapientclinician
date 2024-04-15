@@ -128,7 +128,7 @@ body {
   input[type="date"],
   textarea,
   select {
-    width: 100%;
+    width: 200px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
