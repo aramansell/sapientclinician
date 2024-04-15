@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>Sapient Clinician</title>
+    <link rel="stylesheet" href="demostyle.css">
+  </head>
+  <body>
+    <div class="screen" id="conversation_screen">
+      <div class="conversation_history" id="history">
+
+      </div>
+      <div class="conversation_controls">
+        <div class="conversation_controls_top">
+          <select name="people" id="people">
+            <option value="Notes">Notes</option>
+            <option value="Patient">Patient</option>
+            <option value="Clinician">Clinician</option>
+            <option value="Lab">Lab</option>
+          </select>
+          <input type="checkbox" id="diagnose"> Submit Diagnosis?
+        </div>
+        <script src="main.js"></script>
+        <script>startConversation();</script>
+        
+
+        <div class="conversation_controls_bottom">
+          
+          
+          <script>
+            // Get references to the checkbox and dropdown elements
+            const checkbox = document.getElementById("diagnose");
+            const dropdown = document.getElementById("people");
+    
+            // Initially disable the dropdown and set the boolean variable to false
+            dropdown.disabled = false;
+            let isDiagnosed = false;
+    
+            // Add an event listener to the checkbox
+            checkbox.addEventListener("change", (event) => {
+              // Update the boolean variable based on the checkbox state
+              isDiagnosed = event.target.checked;
+              dropdown.value = 'Notes';
+              // Enable or disable the dropdown accordingly
+              dropdown.disabled = isDiagnosed;
+              checkbox.disabled = isDiagnosed;
+              nextQuestion();
+    
+              // Optionally, perform additional actions based on the boolean value
+              if (isDiagnosed) {
+                console.log("Dropdown is now enabled!");
+                // You can perform other tasks here, such as fetching data or triggering other events
+              } else {
+                console.log("Dropdown is now disabled!");
+                // You could reset the dropdown's value or perform other actions here
+              }
+              });
+
+            </script>
+            <textarea id="conversation_input" placeholder="Type your message here..."></textarea>
+            <button id="conversation_send" onclick="sendMessage(isDiagnosed)">Send</button>
+            <button id="download_history" onclick="downloadTxtFile()">Finish Exam</button>
+
+
+        </div>
+      </div>
+    </div>
+   
+
+    
+  </body>
+</html>
