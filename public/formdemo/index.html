@@ -346,6 +346,30 @@ form.addEventListener('submit', (event) => {
   event.preventDefault();
   generateTxtFile();
 });
+
+/*
+function sendFormDataToServer(formData) {
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  };
+
+  fetch('https://YOUR_REGION-YOUR_PROJECT_ID.cloudfunctions.net/sendFormEmail', requestOptions)
+    .then(response => {
+      if (response.ok) {
+        console.log('Email sent successfully!');
+      } else {
+        console.error('Failed to send email.');
+      }
+    })
+    .catch(error => {
+      console.error('Error occurred while sending email:', error);
+    });
+}
+*/
   </script>
 </body>
 </html>

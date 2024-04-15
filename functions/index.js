@@ -2,6 +2,8 @@ const {onRequest} = require("firebase-functions/v2/https");
 const logger = require("firebase-functions/logger");
 const OpenAI = require('openai');
 const fs = require('fs');
+//const nodemailer = require('nodemailer');
+//const functions = require('firebase-functions');
 
 var openai;
 
@@ -12,6 +14,38 @@ function initOpenAI() {
     });
   }
 }
+/*
+// Configure nodemailer with your email service provider's settings
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: functions.config().gmail.user,
+    pass: functions.config().gmail.pass
+  }
+});
+
+exports.sendFormEmail = functions.https.onRequest(async (req, res) => {
+  const formData = req.body;
+  const emailBody = Object.entries(formData)
+    .map(([key, value]) => `${key}: ${value}`)
+    .join('\n\n');
+
+  const mailOptions = {
+    from: functions.config().gmail.user,
+    to: 'recipient@example.com',
+    subject: 'New Form Submission',
+    text: emailBody
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    res.status(200).send('Email sent successfully');
+  } catch (error) {
+    console.error('Error occurred while sending email:', error);
+    res.status(500).send('Failed to send email');
+  }
+});
+*/
 
 var system_message = fs.readFileSync('system_message.txt', 'utf8');
 
