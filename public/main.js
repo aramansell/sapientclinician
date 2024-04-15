@@ -69,7 +69,7 @@ function sendMessage(diagnosing) {
 }
 
 function startConversation() {
-    addMessageToHistory("System", "The ER doctor would like your help consulting on a patient. Jane is a 34 year old female with leukocytosis.\n\nYou must first choose who you would like information from by selecting them from the dropdown menu below. Your choices are Clinician, Patient or Lab. \n\nAdditionally, you can add Notes. Notes will not interact with the Clinician, Patient or Lab. \n\nAdd your first Note then select who you want to talk with. \n\nWhat are your initial thoughts about the patient?");
+    addMessageToHistory("System", "This assessment will capture your thought process and critial thinking as you attempt to diagnose a patient. \n\nTo begin, create your first Note. After it is sent, select who you want to talk with, by selecting Clinician, Patient or submitting orders to the Lab from the dropdown menu. \n\nAfter several interactions with the Patient, Clinician or Lab you must submit your Diagnosis. \n\n\n\nYour first note should be your initial thoughts about the patient, Jane, whom the ER doctor would like your help consulting on. She is a 34 year old with leukocytosis.");
     currentQuestionIndex = 0;
     
 
