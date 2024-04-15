@@ -161,11 +161,12 @@ body {
   }
   
   button:hover {
-    background-color: lightblue;
+    background-color: rgb(191, 217, 225);
   }
   
   button[type="submit"] {
-    float: right;
+    
+    float: left;
   }
   
   /* Responsive Styles */

@@ -35,6 +35,8 @@
       <div>This section indicates what you hope the learner will determine by the end of the assessment.</div>
       <div id="planContent"></div>
       <button type="button" onclick="createQuestionOnClick()">+ New Question</button> 
+      <br>
+      <br>
     </div> 
     <!--
     <div id="rubric">
@@ -42,7 +44,7 @@
       <div id="rubricContent"></div>
     </div>
     -->
-    <br><br>
+  
     
     <button type="submit">Submit</button>
   </form>
@@ -100,7 +102,7 @@
       parentElement.appendChild(container);
     }
 
-  function createTextarea(parentElement, elementId, placeholderText, labelText, rows = 3, cols = 30) {
+  function createTextarea(parentElement, elementId, placeholderText, labelText, rows = 3, cols = 35) {
   const container = document.createElement('div');
   const labelElement = document.createElement('label');
   labelElement.setAttribute('for', elementId);
