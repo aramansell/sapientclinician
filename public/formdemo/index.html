@@ -13,12 +13,15 @@
     
     <div id="learningTarget">
       <h2>Learning Targets:</h2>
+      <div>Sapient Clinician will give immediate feedback on any learning targets you provide. <br>
+        The assessment will evaluate how well the learner met the description in the rubric you create.</div>
       <div id="learningTargetContent"></div>
       <button type="button" onclick="createInputOnClick()">+ New Learning Target</button>
     </div>
     
     <div id="story">
       <h2>Let's start developing the story:</h2>
+      <div><b>**learner will not recieve any information denoted by an * unless they ask the patient actor for the information directly.**</b></div>
       <div id="storyContent"></div> 
     </div> 
     
@@ -29,7 +32,9 @@
 
     <div id="plan">
       <h2>Now let's create the assessment and plan of the visit:</h2>
-      <div id="planContent"></div> 
+      <div>This section indicates what you hope the learner will determine by the end of the assessment.</div>
+      <div id="planContent"></div>
+      <button type="button" onclick="createQuestionOnClick()">+ New Question</button> 
     </div> 
     <!--
     <div id="rubric">
@@ -170,7 +175,7 @@ const assessmentElement = document.getElementById('assessmentContent');
 createInput(assessmentElement, 'fileName', 'text', 'Chromic Myeloid Leukemia', 'File Name:');
 const purpose = [
   { value: 'Formative Assessment', text: 'Formative Assessment' },
-  { value: 'Summative Assessment', text: 'Clinical Reasoning Assessment' },
+  { value: 'Summative Assessment', text: 'Summative Assessment' },
 ];
 createDropdown(assessmentElement, 'purpose', 'purpose', 'text', 'What Category is this assessment?', purpose);
 
@@ -178,7 +183,7 @@ let objectiveCount = 1;
 const learningTargetElement = document.getElementById('learningTargetContent');
 function createInputOnClick() {
   const inputGroupOptions = [
-    { id: 'LearningObjective', type: 'textarea', placeholder: 'The learner will be able to...', label: `Learning Objective #${objectiveCount} (e.g., submission of accurate diagnosis, patient interviewing knowledge & skills)` },
+    { id: `LearningObjective ${objectiveCount}`, type: 'textarea', placeholder: 'The learner will be able to...', label: `Learning Objective #${objectiveCount} (e.g., submission of accurate diagnosis, patient interviewing knowledge & skills)` },
     { id: 'mastery', type: 'textarea', placeholder: 'Mastery looks like...', label: 'Level 4' },
     { id: 'proficiency', type: 'textarea', placeholder: 'Proficiency looks like...', label: 'Level 3' },
     { id: 'developing', type: 'textarea', placeholder: 'Developing looks like...', label: 'Level 2' },
@@ -188,6 +193,12 @@ function createInputOnClick() {
   createInputGroup(learningTargetElement, `objective${objectiveCount}`, '', inputGroupOptions);
   objectiveCount++;
 }
+let questionCount = 4;
+function createQuestionOnClick(){
+  createInput(planElement, `question ${questionCount}`, 'text', '', `Question ${questionCount}`);
+  questionCount++;
+}
+
 createInputOnClick();
 createInput(assessmentElement, 'who_is_the_learner', 'text', 'First-year med student', 'Who is the learner?');
 createTextarea(assessmentElement, 'Student-facing goal statement', 'Get the correct diagnosis...', 'Student-facing goal statement:');
@@ -196,13 +207,13 @@ const storyElement = document.getElementById('storyContent');
 const patientGroupOptions = [
   { id: 'name', type: 'text', placeholder: 'Patient Name', label: 'Name:' },
   { id: 'preferedName', type: 'text', placeholder: 'Prefered Name', label: 'Prefered Name:' },
-  { id: 'preferedPronouns', type: 'text', placeholder: '', label: 'Pronouns:' },
+  { id: 'preferedPronouns', type: 'text', placeholder: '', label: 'Pronouns:*' },
   { id: 'age', type: 'text', placeholder: 'For example, the patient is 5 weeks or the patient is 32 years old...', label: 'Patient Age:' },
   { id: 'sex', type: 'text', placeholder: 'female', label: 'Sex at birth:' },
   { id: 'message', type: 'textarea', placeholder: 'Sarah is a 14 year old female who woke up with abdominal pain...', label: 'Description/Context:' },
   { id: 'additionalFamilyActors', type: 'textarea', placeholder: 'The patient is accompanied by their seeing eye dog and their parent who has legal custody...', label: 'Relevant Family/Friends Present at Visit:' },
   { id: 'status', type: 'textarea', placeholder: 'The patient is alert and oriented...', label: 'Patient Status:' },
-  { id: 'temperment', type: 'textarea', placeholder: 'The patient is distrustful of medical providers...', label: 'Patient Temperment:' },
+  { id: 'temperment', type: 'textarea', placeholder: 'The patient is distrustful of medical providers...', label: 'Patient Temperment:*' },
   { id: 'physicalDisability', type: 'text', placeholder: 'The patient is legally blind...', label: 'Physical Disabilities:' },
   { id: 'IntelectualDisability', type: 'text', placeholder: 'The patient has Down Syndrome...', label: 'Intelectual Disabilities:' }
 
@@ -218,8 +229,8 @@ const settingOptions = [
 ];
 createDropdown(storyElement, 'settingDropdown', 'setting', 'text', 'Setting:', settingOptions);
 
-createInput(storyElement, 'Reason_for_visit', '', 'Patient complains of chest pain and...', 'Reason for visit/chief complaint/chief concern:');
-createTextarea(storyElement, 'History_of_Present_Illness', 'The patient complains of persistant chest pain lasting 2 hours... Consider the OLDCARTS mnemonic. ', 'History of Present Illness:', rows = 10,);
+createInput(storyElement, 'Reason_for_visit', '', 'Patient complains of chest pain and...', 'Reason for visit/chief complaint or concern:');
+createTextarea(storyElement, 'History_of_Present_Illness', 'The patient complains of persistant chest pain lasting 2 hours... Consider the OLDCARTS mnemonic and any other pertinent information.', 'History of Present Illness:*', rows = 10,);
 
 const heentReviewOfSymptomsGroupOptions = [
     { id: 'general', type: 'text', placeholder: '', label: 'General/Constitutional:' },
@@ -239,23 +250,23 @@ const heentReviewOfSymptomsGroupOptions = [
     { id: 'endocrine', type: 'text', placeholder: '', label: 'Endocrine:' },
     { id: 'hematologic', type: 'text', placeholder: '', label: 'Hematologic:' }
 ];
-createInputGroup(storyElement, 'patientData', 'Review of Systems: (include pertinent positives and negatives)', heentReviewOfSymptomsGroupOptions);
+createInputGroup(storyElement, 'patientData', 'Review of Systems: (include pertinent positives and negatives)*', heentReviewOfSymptomsGroupOptions);
 
 //createTextarea(storyElement, 'Pertinent_patient_background', 'The patient works at...', 'Pertinent patient background:');
 const socialGroupOptions = [
-    { id: 'past_medical', type: 'textarea', placeholder: '', label: 'Past Medical History:' },
-    { id: 'family_medical_history', type: 'textarea', placeholder: '', label: 'Family Medical History:' },
-    { id: 'social_history', type: 'textarea', placeholder: '', label: 'Social History:' },
-    { id: 'social_determinants', type: 'textarea', placeholder: '', label: 'Social Determinants:' },
-    { id: 'medications', type: 'textarea', placeholder: '', label: 'Medications:' },
-    { id: 'allergic', type: 'textarea', placeholder: '', label: 'Allergies:' }
+    { id: 'past_medical', type: 'textarea', placeholder: '', label: 'Past Medical History:*' },
+    { id: 'family_medical_history', type: 'textarea', placeholder: '', label: 'Family Medical History:*' },
+    { id: 'social_history', type: 'textarea', placeholder: '', label: 'Social History:*' },
+    { id: 'social_determinants', type: 'textarea', placeholder: '', label: 'Social Determinants:*' },
+    { id: 'medications', type: 'textarea', placeholder: '', label: 'Medications:*' },
+    { id: 'allergic', type: 'textarea', placeholder: '', label: 'Allergies:*' }
 ]
-createInputGroup(storyElement, 'historyQuestions', 'Patient History:', socialGroupOptions);
+createInputGroup(storyElement, 'historyQuestions', 'Patient History:*', socialGroupOptions);
 
 //crate the story details
 const factsElement = document.getElementById('factsContent');
 
-createTextarea(factsElement, 'Physical_exam', '', 'Physical Exam Findings:');
+//createTextarea(factsElement, 'Physical_exam', '', 'Physical Exam Findings:*');
 const physicalExamGroupOptions = [
     { id: 'vitals', type: 'text', placeholder: 'Include temperature, heart rate, blood pressure, respiratory rate, oxygen saturation', label: 'Vitals:' },
     //{ id: 'headPE', type: 'text', placeholder: '', label: 'Head:' },
@@ -271,21 +282,21 @@ const physicalExamGroupOptions = [
     { id: 'neuroPE', type: 'text', placeholder: '', label: 'Neuro:' },
     { id: 'otherPE', type: 'textarea', placeholder: '', label: 'Other:' }
 ];
-createInputGroup(factsElement, 'physicalExamData', 'Physical Exam Findings: (include pertinent positives and negatives)', physicalExamGroupOptions);
+createInputGroup(factsElement, 'physicalExamData', 'Physical Exam Findings: (include pertinent positives and negatives)*', physicalExamGroupOptions);
 
-createTextarea(factsElement, 'Data', 'Specify every abnormal test name and abnormal results, all other tests will be populated with normal findings unless specified here.', 'Notable Data: (laboratory/imaging results)', rows=12);
+createTextarea(factsElement, 'Data', 'Specify every abnormal test, specify the name and abnormal values or results, all other tests will be populated with typical values or results unless specified here.', 'Notable Data: (laboratory/imaging results)*', rows=12);
 
 //crate the story details
 const planElement = document.getElementById('planContent');
-createTextarea(planElement, 'Diagnosis', 'Chronic Myeloid Leukemia', 'Diagnosis (dx):', rows=5);
-createTextarea(planElement, 'Addition_diagnosis',  '', 'Differential diagnoses:', rows=5);
-createTextarea(planElement, 'Treatment', '', 'Treatment/Intervention:', rows = 5);
-createTextarea(planElement, 'Plan',  '', 'Assessment/Plan:', rows=5);
+createTextarea(planElement, 'Diagnosis', 'Chronic Myeloid Leukemia', 'Diagnosis (dx):*', rows=5);
+createTextarea(planElement, 'Addition_diagnosis',  '', 'Differential diagnoses:*', rows=5);
+createTextarea(planElement, 'Treatment', '', 'Treatment/Intervention:*', rows = 5);
+createTextarea(planElement, 'Plan',  '', 'Assessment/Plan:*', rows=5);
 
 const followupQuestions = [
     { id: 'question1', type: 'text', placeholder: 'What would happen if...', label: 'Question 1' },
     { id: 'question2', type: 'text', placeholder: 'You find out the patient has...', label: 'Question 2' },
-    { id: 'question2', type: 'text', placeholder: 'After 6 weeks of treatment...', label: 'Question 3' }
+    { id: 'question3', type: 'text', placeholder: 'After 6 weeks of treatment...', label: 'Question 3' }
 ];
 createInputGroup(planElement, 'followUpQuestions', 'Questions following the scenerio:', followupQuestions);
 /*
