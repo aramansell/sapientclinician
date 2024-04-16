@@ -47,7 +47,7 @@ exports.sendFormEmail = functions.https.onRequest(async (req, res) => {
 });
 */
 
-var system_message = fs.readFileSync('system_message.txt', 'utf8');
+// var system_message = fs.readFileSync('system_message.txt', 'utf8');
 
 exports.sendMessage = onRequest({ secrets: ["OPENAI_API_KEY"] }, (request, response) => {
 
@@ -63,6 +63,7 @@ exports.sendMessage = onRequest({ secrets: ["OPENAI_API_KEY"] }, (request, respo
   if (request.method == "POST" && request.body) {
     try {
       var message_history = request.body.message_history;
+      var system_message = request.body.prompt; // <--- This is a horrible idea because anyone could send a custom prompt
     }
     catch (error) {
       logger.log("Failed to parse request body")

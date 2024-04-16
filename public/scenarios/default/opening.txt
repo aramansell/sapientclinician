@@ -1,0 +1,8 @@
+This assessment will capture your thought process and critial thinking as you attempt to diagnose a patient.
+
+To begin, create your first Note. After it is sent, select who you want to talk with, by selecting Clinician, Patient or submitting orders to the Lab from the dropdown menu. 
+
+After several interactions with the Patient, Clinician or Lab you must submit your Diagnosis.
+
+
+Your first note should be your initial thoughts about the patient, Jane, whom the ER doctor would like your help consulting on. She is a 34 year old with leukocytosis.
