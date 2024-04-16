@@ -9,6 +9,8 @@ var openingText = '';
 var questionsText = '';
 var promptText = '';
 var questions = [];
+var actorsText = '';
+var actorsNames = {};
 
 function init() {
 
@@ -26,9 +28,24 @@ function init() {
     Promise.all([
         fetchTextFile(`${basePath}/opening.txt`),
         fetchTextFile(`${basePath}/questions.txt`),
-        fetchTextFile(`${basePath}/prompt.txt`)
+        fetchTextFile(`${basePath}/prompt.txt`),
+        fetchTextFile(`${basePath}/actors.json`)
     ]).then(texts => {
-        [openingText, questionsText, promptText] = texts;
+        [openingText, questionsText, promptText, actorsText] = texts;
+
+        actorsNames = JSON.parse(actorsText);
+
+        document.querySelector("#people > option[value='Patient']").innerText = actorsNames['Patient'];
+        if (actorsNames['Clinician']) {
+            document.querySelector("#people > option[value='Clinician']").innerText = actorsNames['Clinician'];
+        } else {
+            document.querySelector("#people > option[value='Clinician']").outerHTML = '';
+        }
+        if (actorsNames['Lab']) {
+            document.querySelector("#people > option[value='Lab']").innerText = actorsNames['Lab'];
+        } else {
+            document.querySelector("#people > option[value='Lab']").outerHTML = '';
+        }
 
         questions = questionsText.split('\n').filter(q => q.length > 0).map(a => a.trim());
     
@@ -55,11 +72,11 @@ var message_history = [];
 function addMessageToHistory(from, message, to) {
     $('#history').insertAdjacentHTML('beforeend', 
         `<div class="message_entry ${from == "You" ? "sent_message" : ""}">
-            <div class="message_from">${escapeHTML(from)}</div>
+            <div class="message_from">${escapeHTML(actorsNames[from] ? actorsNames[from] : from)}</div>
             <div class="message_text">${escapeHTML(message)}</div>
         </div>`);
     $('#history').scrollTop = $('#history').scrollHeight;
-    message_history.push({from: from, message: message, to: to});
+    message_history.push({from: (actorsNames[from] ? actorsNames[from] : from), message: message, to: (actorsNames[to] ? actorsNames[to] : to)});
 }
 
 function sendMessage(diagnosing) {

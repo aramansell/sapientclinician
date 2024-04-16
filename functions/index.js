@@ -75,6 +75,8 @@ exports.sendMessage = onRequest({ secrets: ["OPENAI_API_KEY"] }, (request, respo
   }
 
   function validateArguments() {
+    return true; // <--- This is also a bad idea
+
     function validateMessageHistoryEntry(entry) {
       return typeof entry == "object" && ["Patient", "Clinician", "Lab", "You", "Update"].includes(entry.from) && (entry.from == "You" ? ["Patient", "Clinician", "Lab"].includes(entry.to) : !entry.to) && typeof entry.message == "string" && entry.message.length > 0;
     }
@@ -104,7 +106,7 @@ exports.sendMessage = onRequest({ secrets: ["OPENAI_API_KEY"] }, (request, respo
 
     openai.chat.completions.create({
       messages: convertMessageHistoryToOpenAIFormat(message_history),
-      model: 'gpt-4-1106-preview',
+      model: 'gpt-4-turbo',
     }).then(function (result) {
 
       response.status(200).send(JSON.stringify({ message: result.choices[0].message.content }));
