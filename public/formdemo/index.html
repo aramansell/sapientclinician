@@ -6,6 +6,9 @@
 </head>
 <body>
   <form id="scenarioForm">
+    <div>To upload a previous scenario, click here: </div>
+    <input type="file" id="fileInput" accept=".txt">
+    <button type="button" onclick="fileInput.click()">Upload form-data.txt</button>
     <div id="assessment">
       <h2>What is the purpose of this assessment:</h2>
       <div id="assessmentContent"></div>
@@ -46,10 +49,45 @@
     -->
   
     
+
     <button type="submit">Submit</button>
   </form>
 
   <script>
+
+    function handleFileUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const fileContent = e.target.result;
+        populateFormFromFile(fileContent);
+      }
+      reader.readAsText(file);
+      }
+    }
+
+    function populateFormFromFile(fileContent) {
+      const formData = new FormData(document.getElementById('scenarioForm'));
+      const lines = fileContent.trim().split('\n\n');
+      for (const line of lines) {
+        const [key, value] = line.split(': ');
+        if (key && value) {
+          const formElement = document.querySelector(`[name="${key}"]`);
+          if (formElement) {
+            if (formElement.type === 'checkbox') {
+              formElement.checked = value === 'on';
+            } else {
+              formElement.value = value;
+            }
+          }
+        }
+      }
+    }
+
+    const fileInput = document.getElementById('fileInput');
+    fileInput.addEventListener('change', handleFileUpload);
+
     function createDropdown(parentElement, elementId, elementName, elementType, questionText, options) {
       const container = document.createElement('div');
       const questionElement = document.createElement('p');
