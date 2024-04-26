@@ -1,0 +1,5 @@
+{
+    "Patient": "Patient",
+    "Clinician": "Ob/gyn",
+    "Lab": "Tests/Labs/Imaging"
+}
