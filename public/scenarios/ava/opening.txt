@@ -4,5 +4,4 @@ To begin, create your first Note. After it is sent, select who you want to talk 
 
 After several interactions with the Patient, Clinician or Lab you must submit your Diagnosis.
 
-Patient called around 10 pm with abdominal discomfort for 4 hours, feels like it is gas/bloating, went to bed but woke up feeling kind of uncomfortable. No n/v, diarrhea, constipation, fever. No VB, LOF, Ucx's. Advised that it most likely is related to gas. If develops any other symptoms or worsening discomfort to call back.
-Patient called back around 1 am because the pain is becoming more severe, hurts to move, has developed diarrhea x 3, vomiting x 1 episode, feels warm and sweaty, feverish (no thermometer).  Sipping on water, can only drink small amounts.  Describes pain as in right lower quadrant.  
+The patient is pregnant and complaining of gas and bloating.
