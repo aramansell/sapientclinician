@@ -46,6 +46,9 @@ function init() {
         } else {
             document.querySelector("#people > option[value='Lab']").outerHTML = '';
         }
+        if (actorsNames['Observer']) {
+            document.querySelector("#people > option[value='Lab']").outerHTML = '';
+        }
 
         questions = questionsText.split('\n').filter(q => q.length > 0).map(a => a.trim());
     
@@ -79,17 +82,18 @@ function addMessageToHistory(from, message, to) {
     message_history.push({from: (actorsNames[from] ? actorsNames[from] : from), message: message, to: (actorsNames[to] ? actorsNames[to] : to)});
 }
 
-function sendMessage(diagnosing, agent) {
+
+function sendMessage(diagnosing, _person, _message) {
     let message = $('#conversation_input').value;
-    let person;
-  
-    if (agent == 'Observer') {
+    let person = $('#people').value;
+    if (_person == 'Observer') {
         
-        person = 'Observer'
+        person = "Observer"
     }
-    else {
-        person = $('#people').value;
-    }
+    if (_message != null) {
+        message = _message;
+     }
+    
     if (message.length > 0) 
     {
         addMessageToHistory("You", message, person);
@@ -137,7 +141,7 @@ function startConversation() {
 
 
 function downloadTxtFile() {
-    sendMessage(false, 'Observer');
+    sendMessage(false, 'Observer', 'Provide a summery of the text and give feedback on the conversation history');
     // Create a Blob with the specified content and MIME type
     const blob = new Blob([message_history.map(a => a.from+"\n\n"+a.message).join("\n\n")], { type: 'text/plain' });
     
