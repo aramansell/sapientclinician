@@ -169,9 +169,9 @@
         const checkboxWrapper = document.createElement('div');
         const checkboxElement = document.createElement('input');
         checkboxElement.type = 'checkbox';
-        checkboxElement.name = `${elementId}-checkbox-${index}`;
+        checkboxElement.name = checkbox.value;
         checkboxElement.value = checkbox.value;
-        checkboxElement.id = `${elementId}-checkbox-${index}`;
+        checkboxElement.id = checkbox.value;
 
         const labelElement = document.createElement('label');
         labelElement.textContent = checkbox.text;
@@ -275,11 +275,11 @@ createTextarea(storyElement, 'History_of_Present_Illness', 'The patient complain
 
 const heentReviewOfSymptomsGroupOptions = [
     { id: 'general', placeholder: 'For all of the following, please add into the boxes anything not listed in the check boxes. None of these will be revealed unless asked about by the learner.', label: 'General/Constitutional:',  checkboxes: [
-      { value: 'weight_gain', text: 'Any recent weight gain?' },
-      { value: 'weight_loss', text: 'Any recent weight loss?' },
+      { value: 'weight gain', text: 'Any recent weight gain?' },
+      { value: 'weight loss', text: 'Any recent weight loss?' },
       { value: 'fever', text: 'Fever?' },
       { value: 'chills', text: 'Chills?' },
-      { value: 'night_sweats', text: 'Night Sweats?' },
+      { value: 'night sweats', text: 'Night Sweats?' },
       { value: 'fatigue', text: 'Any fatigue?' },
     ]
   }, 
@@ -288,81 +288,81 @@ const heentReviewOfSymptomsGroupOptions = [
     ]
   },
     { id: 'eyes', placeholder: '', label: 'Eyes:', checkboxes: [
-      { value: 'changes_in_vision', text: 'Changes in vision?' },
-      { value: 'loss_of_vision', text: 'Loss of vision?' },
-      { value: 'eye_pain', text: 'Eye pain?' },
-      { value: 'eye_irritation', text: 'Eye irritation?' },
-      { value: 'light_sensitivity', text: 'Light Sensitivity?' },
+      { value: 'changes in vision', text: 'Changes in vision?' },
+      { value: 'loss of vision', text: 'Loss of vision?' },
+      { value: 'eye pain', text: 'Eye pain?' },
+      { value: 'eye irritation', text: 'Eye irritation?' },
+      { value: 'light sensitivity', text: 'Light Sensitivity?' },
     ]},
     { id: 'ears', placeholder: '', label: 'Ears:', checkboxes: [
-      { value: 'changes_in_hearing', text: 'Changes in hearing?' },
-      { value: 'loss_of_hearing', text: 'Loss of hearing?' },
-      { value: 'tinnitis', text: 'Ear ringing?' },
-      { value: 'ear_pain', text: 'Ear pain?' },
+      { value: 'changes in hearing', text: 'Changes in hearing?' },
+      { value: 'loss of hearing', text: 'Loss of hearing?' },
+      { value: 'ear ringing', text: 'Ear ringing?' },
+      { value: 'ear pain', text: 'Ear pain?' },
     ]},
     { id: 'nose', placeholder: '', label: 'Nose:', checkboxes: [
-      { value: 'nasal_congestion', text: 'Congestion?' },
-      { value: 'rhinorrhea', text: 'Runny nose?' },
-      { value: 'sinus_pain', text: 'Sinus pain?' },
+      { value: 'nasal congestion', text: 'Congestion?' },
+      { value: 'runny nose', text: 'Runny nose?' },
+      { value: 'sinus pain', text: 'Sinus pain?' },
     ]},
     { id: 'throat', placeholder: '', label: 'Throat:' , checkboxes: [
-      { value: 'sore_throat', text: 'Sore throat?' },
+      { value: 'sore throat', text: 'Sore throat?' },
       { value: 'hoarseness', text: 'Hoarseness?' },
-      { value: 'difficulty_swallowing', text: 'Difficulty swallowing?' },
+      { value: 'difficulty swallowing', text: 'Difficulty swallowing?' },
     ]},
     { id: 'neck', placeholder: '', label: 'Neck:' , checkboxes: [
       { value: 'neck pain', text: 'Neck pain?' },
-      { value: 'neck_swelling', text: 'Swelling?' },
+      { value: 'neck swelling', text: 'Swelling?' },
     ]},
     { id: 'respiratory', placeholder: '', label: 'Respiratory:' , checkboxes: [
       { value: 'cough', text: 'Cough?' },
       { value: 'wheezing', text: 'Wheezing?' },
-      { value: 'shortness_of_breath', text: 'Shortness of breath?' },
+      { value: 'shortness of breath', text: 'Shortness of breath?' },
       { value: 'history of asthma', text: 'History of asthma?' },
       { value: 'history of COPD', text: 'History of COPD?' },
     ]},
     { id: 'cardiovascular', placeholder: '', label: 'Cardiovascular:' , checkboxes: [
-      { value: 'chest_pain', text: 'Chest pain?' },
+      { value: 'chest pain', text: 'Chest pain?' },
       { value: 'palpitations', text: 'Palpitations?' },
-      { value: 'chest_pressure', text: 'Pressure?' },
-      { value: 'swelling_legs_or_ankles', text: 'Swelling?' },
-      { value: 'high_blood_pressure', text: 'High blood pressure?' },
+      { value: 'chest pressure', text: 'Pressure?' },
+      { value: 'swelling legs or ankles', text: 'Swelling?' },
+      { value: 'high blood pressure', text: 'High blood pressure?' },
       { value: 'history of MI', text: 'History of MI?' },
       { value: 'history of stroke', text: 'History of stroke?' },
     ]},
     { id: 'gastrointestinal', placeholder: '', label: 'Gastrointestinal:' , checkboxes: [
       { value: 'nausea', text: 'Nausea?' },
       { value: 'vomiting', text: 'Vomiting?' },
-      { value: 'abdominal_pain', text: 'Abdominal pain?' },
+      { value: 'abdominal pain', text: 'Abdominal pain?' },
       { value: 'diarrhea', text: 'Diarrhea?' },
       { value: 'constipation', text: 'Constipation?' },
-      { value: 'blood_in_stool', text: 'Blood in the stool?' },
+      { value: 'blood in stool', text: 'Blood in the stool?' },
       { value: 'heartburn', text: 'Heartburn?' },
     ]},
     { id: 'genitourinary', placeholder: '', label: 'Genitourinary:' , checkboxes: [
-      { value: 'urinary_frequency', text: 'Frequency?' },
-      { value: 'urinary_urgency', text: 'Urgency?' },
-      { value: 'urinary_hesitancy', text: 'Hesitancy?' },
-      { value: 'blood_in_urine', text: 'Blood in the urine?' },
-      { value: 'pain_with_urination', text: 'Pain with urination?' },
+      { value: 'urinary frequency', text: 'Frequency?' },
+      { value: 'urinary frgency', text: 'Urgency?' },
+      { value: 'urinary hesitancy', text: 'Hesitancy?' },
+      { value: 'blood in urine', text: 'Blood in the urine?' },
+      { value: 'pain with urination', text: 'Pain with urination?' },
       { value: 'genital pain', text: 'Genital pain?' },
       { value: 'changes in menstrual cycle', text: 'Changes in menstraul cycle?' },
     ]},
     { id: 'musculoskeletal', placeholder: '', label: 'Musculoskeletal:' , checkboxes: [
-      { value: 'bone_pain', text: 'Bone pain?' },
-      { value: 'joint_pain', text: 'Joint pain?' },
-      { value: 'muscle_pain', text: 'Muscle pain?' },
-      { value: 'muscle_cramping', text: 'Muscle cramping?' },
-      { value: 'muscle_weakness', text: 'Muscle weakness?' },
+      { value: 'bone pain', text: 'Bone pain?' },
+      { value: 'joint pain', text: 'Joint pain?' },
+      { value: 'muscle pain', text: 'Muscle pain?' },
+      { value: 'muscle cramping', text: 'Muscle cramping?' },
+      { value: 'muscle weakness', text: 'Muscle weakness?' },
       { value: 'back pain', text: 'Back pain?' },
-      { value: 'limited_range_of_motion', text: 'Limited range of motion?' },
+      { value: 'limited range of motion', text: 'Limited range of motion?' },
     ]},
     { id: 'derm', placeholder: '', label: 'Derm:' , checkboxes: [
-      { value: 'changes_in_skin', text: 'Skin changes?' },
+      { value: 'changes in skin', text: 'Skin changes?' },
       { value: 'rashes', text: 'Rashes?' },
       { value: 'itching', text: 'Itching?' },
       { value: 'wounds', text: 'Wounds or sores?' },
-      { value: 'skin_lesions', text: 'Skin lesions?' },
+      { value: 'skin lesions', text: 'Skin lesions?' },
     ]},
     { id: 'neurological', placeholder: '', label: 'Neurological:' , checkboxes: [
       { value: 'dizziness', text: 'Dizziness?' },
@@ -371,23 +371,23 @@ const heentReviewOfSymptomsGroupOptions = [
       { value: 'weakness', text: 'Weakness?' },
       { value: 'seizures', text: 'Seizures?' },
       { value: 'tremors', text: 'Tremors?' },
-      { value: 'changes_in_memory', text: 'Changes in memory?' },
-      { value: 'difficulty_with_concentration', text: 'Difficulty concentrating?' },
-      { value: 'difficulty_with_coordination', text: 'Difficulty with coordination?' },
+      { value: 'changes in memory', text: 'Changes in memory?' },
+      { value: 'difficulty with concentration', text: 'Difficulty concentrating?' },
+      { value: 'difficulty with coordination', text: 'Difficulty with coordination?' },
     ]},
     { id: 'psychiatric', placeholder: '', label: 'Psychiatric:' , checkboxes: [
-      { value: 'changes_in_mood', text: 'Changes in mood?' },
+      { value: 'changes in mood', text: 'Changes in mood?' },
       { value: 'depression', text: 'Depression?' },
       { value: 'anxiety', text: 'Anxiety?' },
-      { value: 'changes_in_sleep', text: 'Changes in sleep?' },
-      { value: 'suicidal_ideation', text: 'Suicidal?' },
+      { value: 'changes in sleep', text: 'Changes in sleep?' },
+      { value: 'suicidal ideation', text: 'Suicidal?' },
     ]},
     { id: 'endocrine', placeholder: '', label: 'Endocrine:' , checkboxes: [
-      { value: 'changes_in_appetite', text: 'Changes in appetite?' },
-      { value: 'excessive_thirst', text: 'Excessive thirst?' },
-      { value: 'excessive_urination', text: 'Excessive urination?' },
-      { value: 'history of thyroid_disorders', text: 'History of thyroid disorders?' },
-      { value: 'history of diabeties', text: 'History of diabeties?' },
+      { value: 'changes in appetite', text: 'Changes in appetite?' },
+      { value: 'excessive thirst', text: 'Excessive thirst?' },
+      { value: 'excessive urination', text: 'Excessive urination?' },
+      { value: 'history of thyroid disorders', text: 'History of thyroid disorders?' },
+      { value: 'history of diabetes', text: 'History of diabetes?' },
       { value: 'heat or cold intolerance', text: 'Heat or cold intolerance?' },
     ]},
     { id: 'hematologic', placeholder: '', label: 'Hematologic:', checkboxes: [
