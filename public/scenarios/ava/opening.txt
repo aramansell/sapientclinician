@@ -1,7 +1,7 @@
-This assessment will capture your thought process and critial thinking as you attempt to diagnose a patient.
+This assessment will capture your thought process and critical thinking as you attempt to diagnose a patient.
 
-To begin, create your first Note. After it is sent, select who you want to talk with, by selecting Ob/Gyn, Patient or submitting requests to the Tests/Labs/Imaging from the dropdown menu. 
+Select who you want to talk with, by selecting Ob/Gyn, Patient or submitting requests to the Tests/Labs/Imaging from the dropdown menu. 
 
 After several interactions with the Patient, Clinician or Lab you must submit your Diagnosis.
 
-The patient is pregnant and complaining of gas and bloating.
+The patient is pregnant and complaining of abdominal pain.
