@@ -46,9 +46,7 @@ function init() {
         } else {
             document.querySelector("#people > option[value='Lab']").outerHTML = '';
         }
-        if (actorsNames['Observer']) {
-            document.querySelector("#people > option[value='Observer']").outerHTML = '';
-        }
+        
 
         questions = questionsText.split('\n').filter(q => q.length > 0).map(a => a.trim());
     
