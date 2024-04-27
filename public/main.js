@@ -79,10 +79,15 @@ function addMessageToHistory(from, message, to) {
     message_history.push({from: (actorsNames[from] ? actorsNames[from] : from), message: message, to: (actorsNames[to] ? actorsNames[to] : to)});
 }
 
-function sendMessage(diagnosing) {
+function sendMessage(diagnosing, agent) {
     let message = $('#conversation_input').value;
-    let person = $('#people').value;
-
+    if (agent == null) {
+        
+        let person = $('#people').value;
+    }
+    else {
+        let person = agent;
+    }
     if (message.length > 0) 
     {
         addMessageToHistory("You", message, person);
@@ -130,9 +135,10 @@ function startConversation() {
 
 
 function downloadTxtFile() {
+    sendMessage(diagnosing, "Observer")
     // Create a Blob with the specified content and MIME type
     const blob = new Blob([message_history.map(a => a.from+"\n\n"+a.message).join("\n\n")], { type: 'text/plain' });
-  
+    
     // Create a URL for the Blob
     const url = URL.createObjectURL(blob);
   
