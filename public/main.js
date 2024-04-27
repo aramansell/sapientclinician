@@ -137,7 +137,7 @@ function startConversation() {
 
 
 function downloadTxtFile() {
-    sendMessage(false, 'Observer')
+    sendMessage(false, 'Observer');
     // Create a Blob with the specified content and MIME type
     const blob = new Blob([message_history.map(a => a.from+"\n\n"+a.message).join("\n\n")], { type: 'text/plain' });
     
