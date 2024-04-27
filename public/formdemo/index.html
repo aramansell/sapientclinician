@@ -274,24 +274,136 @@ createTextarea(storyElement, 'Reason_for_visit', '', 'Patient complains of chest
 createTextarea(storyElement, 'History_of_Present_Illness', 'The patient complains of persistant chest pain lasting 2 hours... Consider the OLDCARTS mnemonic and any other pertinent information.', 'History of Present Illness:*', rows = 10,);
 
 const heentReviewOfSymptomsGroupOptions = [
-    { id: 'general', placeholder: '', label: 'General/Constitutional:' },
-    //{ id: 'head', type: 'text', placeholder: '', label: 'Head:' },
-    { id: 'eyes', placeholder: '', label: 'Eyes:' },
-    { id: 'ears', placeholder: '', label: 'Ears:' },
-    { id: 'nose', placeholder: '', label: 'Nose:' },
-    { id: 'throat', placeholder: '', label: 'Throat:' },
-    { id: 'respiratory', placeholder: '', label: 'Respiratory:' },
-    { id: 'cardiovascular', placeholder: '', label: 'Cardiovascular:' },
-    { id: 'gastrointestinal', placeholder: '', label: 'Gastrointestinal:' },
-    { id: 'genitourinary', placeholder: '', label: 'Genitourinary:' },
-    { id: 'musculoskeletal', placeholder: '', label: 'Musculoskeletal:' },
-    { id: 'derm', placeholder: '', label: 'Derm:' },
-    { id: 'neurological', placeholder: '', label: 'Neurological:' },
-    { id: 'psychiatric', placeholder: '', label: 'Psychiatric:' },
-    { id: 'endocrine', placeholder: '', label: 'Endocrine:' },
-    { id: 'hematologic', placeholder: '', label: 'Hematologic:' }
+    { id: 'general', placeholder: 'For all of the following, please add into the boxes anything not listed in the check boxes. None of these will be revealed unless asked about by the learner.', label: 'General/Constitutional:',  checkboxes: [
+      { value: 'weight_gain', text: 'Any recent weight gain?' },
+      { value: 'weight_loss', text: 'Any recent weight loss?' },
+      { value: 'fever', text: 'Fever?' },
+      { value: 'chills', text: 'Chills?' },
+      { value: 'night_sweats', text: 'Night Sweats?' },
+      { value: 'fatigue', text: 'Any fatigue?' },
+    ]
+  }, 
+    { id: 'head', placeholder: '', label: 'Head:', checkboxes: [
+      { value: 'headaches', text: 'Any headaches?' },
+    ]
+  },
+    { id: 'eyes', placeholder: '', label: 'Eyes:', checkboxes: [
+      { value: 'changes_in_vision', text: 'Changes in vision?' },
+      { value: 'loss_of_vision', text: 'Loss of vision?' },
+      { value: 'eye_pain', text: 'Eye pain?' },
+      { value: 'eye_irritation', text: 'Eye irritation?' },
+      { value: 'light_sensitivity', text: 'Light Sensitivity?' },
+    ]},
+    { id: 'ears', placeholder: '', label: 'Ears:', checkboxes: [
+      { value: 'changes_in_hearing', text: 'Changes in hearing?' },
+      { value: 'loss_of_hearing', text: 'Loss of hearing?' },
+      { value: 'tinnitis', text: 'Ear ringing?' },
+      { value: 'ear_pain', text: 'Ear pain?' },
+    ]},
+    { id: 'nose', placeholder: '', label: 'Nose:', checkboxes: [
+      { value: 'nasal_congestion', text: 'Congestion?' },
+      { value: 'rhinorrhea', text: 'Runny nose?' },
+      { value: 'sinus_pain', text: 'Sinus pain?' },
+    ]},
+    { id: 'throat', placeholder: '', label: 'Throat:' , checkboxes: [
+      { value: 'sore_throat', text: 'Sore throat?' },
+      { value: 'hoarseness', text: 'Hoarseness?' },
+      { value: 'difficulty_swallowing', text: 'Difficulty swallowing?' },
+    ]},
+    { id: 'neck', placeholder: '', label: 'Neck:' , checkboxes: [
+      { value: 'neck pain', text: 'Neck pain?' },
+      { value: 'neck_swelling', text: 'Swelling?' },
+    ]},
+    { id: 'respiratory', placeholder: '', label: 'Respiratory:' , checkboxes: [
+      { value: 'cough', text: 'Cough?' },
+      { value: 'wheezing', text: 'Wheezing?' },
+      { value: 'shortness_of_breath', text: 'Shortness of breath?' },
+      { value: 'history of asthma', text: 'History of asthma?' },
+      { value: 'history of COPD', text: 'History of COPD?' },
+    ]},
+    { id: 'cardiovascular', placeholder: '', label: 'Cardiovascular:' , checkboxes: [
+      { value: 'chest_pain', text: 'Chest pain?' },
+      { value: 'palpitations', text: 'Palpitations?' },
+      { value: 'chest_pressure', text: 'Pressure?' },
+      { value: 'swelling_legs_or_ankles', text: 'Swelling?' },
+      { value: 'high_blood_pressure', text: 'High blood pressure?' },
+      { value: 'history of MI', text: 'History of MI?' },
+      { value: 'history of stroke', text: 'History of stroke?' },
+    ]},
+    { id: 'gastrointestinal', placeholder: '', label: 'Gastrointestinal:' , checkboxes: [
+      { value: 'nausea', text: 'Nausea?' },
+      { value: 'vomiting', text: 'Vomiting?' },
+      { value: 'abdominal_pain', text: 'Abdominal pain?' },
+      { value: 'diarrhea', text: 'Diarrhea?' },
+      { value: 'constipation', text: 'Constipation?' },
+      { value: 'blood_in_stool', text: 'Blood in the stool?' },
+      { value: 'heartburn', text: 'Heartburn?' },
+    ]},
+    { id: 'genitourinary', placeholder: '', label: 'Genitourinary:' , checkboxes: [
+      { value: 'urinary_frequency', text: 'Frequency?' },
+      { value: 'urinary_urgency', text: 'Urgency?' },
+      { value: 'urinary_hesitancy', text: 'Hesitancy?' },
+      { value: 'blood_in_urine', text: 'Blood in the urine?' },
+      { value: 'pain_with_urination', text: 'Pain with urination?' },
+      { value: 'genital pain', text: 'Genital pain?' },
+      { value: 'changes in menstrual cycle', text: 'Changes in menstraul cycle?' },
+    ]},
+    { id: 'musculoskeletal', placeholder: '', label: 'Musculoskeletal:' , checkboxes: [
+      { value: 'bone_pain', text: 'Bone pain?' },
+      { value: 'joint_pain', text: 'Joint pain?' },
+      { value: 'muscle_pain', text: 'Muscle pain?' },
+      { value: 'muscle_cramping', text: 'Muscle cramping?' },
+      { value: 'muscle_weakness', text: 'Muscle weakness?' },
+      { value: 'back pain', text: 'Back pain?' },
+      { value: 'limited_range_of_motion', text: 'Limited range of motion?' },
+    ]},
+    { id: 'derm', placeholder: '', label: 'Derm:' , checkboxes: [
+      { value: 'changes_in_skin', text: 'Skin changes?' },
+      { value: 'rashes', text: 'Rashes?' },
+      { value: 'itching', text: 'Itching?' },
+      { value: 'wounds', text: 'Wounds or sores?' },
+      { value: 'skin_lesions', text: 'Skin lesions?' },
+    ]},
+    { id: 'neurological', placeholder: '', label: 'Neurological:' , checkboxes: [
+      { value: 'dizziness', text: 'Dizziness?' },
+      { value: 'numbness', text: 'Numbness?' },
+      { value: 'tingling', text: 'Tingling?' },
+      { value: 'weakness', text: 'Weakness?' },
+      { value: 'seizures', text: 'Seizures?' },
+      { value: 'tremors', text: 'Tremors?' },
+      { value: 'changes_in_memory', text: 'Changes in memory?' },
+      { value: 'difficulty_with_concentration', text: 'Difficulty concentrating?' },
+      { value: 'difficulty_with_coordination', text: 'Difficulty with coordination?' },
+    ]},
+    { id: 'psychiatric', placeholder: '', label: 'Psychiatric:' , checkboxes: [
+      { value: 'changes_in_mood', text: 'Changes in mood?' },
+      { value: 'depression', text: 'Depression?' },
+      { value: 'anxiety', text: 'Anxiety?' },
+      { value: 'changes_in_sleep', text: 'Changes in sleep?' },
+      { value: 'suicidal_ideation', text: 'Suicidal?' },
+    ]},
+    { id: 'endocrine', placeholder: '', label: 'Endocrine:' , checkboxes: [
+      { value: 'changes_in_appetite', text: 'Changes in appetite?' },
+      { value: 'excessive_thirst', text: 'Excessive thirst?' },
+      { value: 'excessive_urination', text: 'Excessive urination?' },
+      { value: 'history of thyroid_disorders', text: 'History of thyroid disorders?' },
+      { value: 'history of diabeties', text: 'History of diabeties?' },
+      { value: 'heat or cold intolerance', text: 'Heat or cold intolerance?' },
+    ]},
+    { id: 'hematologic', placeholder: '', label: 'Hematologic:', checkboxes: [
+      { value: 'bruising', text: 'Bruising?' },
+      { value: 'bleeding', text: 'Bleeding?' },
+      { value: 'history of anemia', text: 'History of anemia?' },
+      { value: 'clotting disorders', text: 'Clotting disorders?' },
+      { value: 'swollen lymph nodes', text: 'Swollen lymph nodes?' },
+    ]},
+    { id: 'allergic/immunologic', placeholder: '', label: 'Allergic/Immunologic:', checkboxes: [
+      { value: 'food allergies', text: 'Food allergies? (list above)' },
+      { value: 'drug allergies', text: 'Drug allergies? (list above)' },
+      { value: 'frequent infections', text: 'Frequent infections?' },
+    ]}
 ];
-createTextareaGroup(storyElement, 'patientData', 'Review of Systems: (include pertinent positives and negatives)*', heentReviewOfSymptomsGroupOptions);
+createTextareaGroup(storyElement, 'patientData', 'Review of Systems: These will be revealed by the patient if asked by the learner.  (include pertinent positives and negatives)*', heentReviewOfSymptomsGroupOptions);
 
 //createTextarea(storyElement, 'Pertinent_patient_background', 'The patient works at...', 'Pertinent patient background:');
 const socialGroupOptions = [
@@ -311,17 +423,17 @@ const factsElement = document.getElementById('factsContent');
 const physicalExamGroupOptions = [
     { id: 'vitals', placeholder: 'Include temperature, heart rate, blood pressure, respiratory rate, oxygen saturation', label: 'Vitals:' },
     //{ id: 'headPE', type: 'text', placeholder: '', label: 'Head:' },
-    { id: 'generalPE', placeholder: '', label: 'General appearance:' },
-    { id: 'HEENTPE', placeholder: '', label: 'HEENT:' },
-    { id: 'lungsPE', placeholder: '', label: 'Lungs:' },
-    { id: 'heartPE', placeholder: '', label: 'Heart:' },
-    { id: 'abdomenPE', placeholder: '', label: 'Abdomen:' },
+    { id: 'generalPE', placeholder: 'anxious appearing', label: 'General appearance:' },
+    { id: 'HEENTPE', placeholder: 'atraumatic, PERRLA, etc', label: 'HEENT:' },
+    { id: 'lungsPE', placeholder: 'expiratory wheezes in the RLL base...', label: 'Lungs:' },
+    { id: 'heartPE', placeholder: 'irregularly irregular rhythm,...', label: 'Heart:' },
+    { id: 'abdomenPE', placeholder: 'tenderness to palpation...', label: 'Abdomen:' },
     //{ id: 'genitourinaryPE', placeholder: '', label: 'Genitourinary:' },
-    { id: 'extremitiesPE', placeholder: '', label: 'Extremities:' },
-    { id: 'lymphNodesPE', placeholder: '', label: 'Lymph nodes:' },
-    { id: 'skinPE', placeholder: '', label: 'Skin:' },
-    { id: 'neuroPE', placeholder: '', label: 'Neuro:' },
-    { id: 'otherPE', placeholder: '', label: 'Other:' }
+    { id: 'extremitiesPE', placeholder: 'MAE...', label: 'Extremities:' },
+    { id: 'lymphNodesPE', placeholder: 'lymphadenopathy...', label: 'Lymph nodes:' },
+    { id: 'skinPE', placeholder: 'erythematous...', label: 'Skin:' },
+    { id: 'neuroPE', placeholder: 'CN II XII grossly intact... ', label: 'Neuro:' },
+    { id: 'otherPE', placeholder: 'anything not listed...', label: 'Other:' }
 ];
 createTextareaGroup(factsElement, 'physicalExamData', 'Physical Exam Findings: (include pertinent positives and negatives)*', physicalExamGroupOptions);
 
