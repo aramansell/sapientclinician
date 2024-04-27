@@ -137,30 +137,33 @@ function startConversation() {
 
 function downloadTxtFile() {
     sendMessage(false, 'Observer', 'Provide a summery of the text and give feedback on the conversation history');
-    // Create a Blob with the specified content and MIME type
-    const blob = new Blob([message_history.map(a => a.from+"\n\n"+a.message).join("\n\n")], { type: 'text/plain' });
-    
-    // Create a URL for the Blob
-    const url = URL.createObjectURL(blob);
   
-    // Create a link element
-    const link = document.createElement('a');
+    setTimeout(function() {
+      // Create a Blob with the specified content and MIME type
+      const blob = new Blob([message_history.map(a => a.from + "\n\n" + a.message).join("\n\n")], { type: 'text/plain' });
   
-    // Set the link's attributes
-    link.href = url;
-    link.download = 'history.txt';
+      // Create a URL for the Blob
+      const url = URL.createObjectURL(blob);
   
-    // Append the link to the document body
-    document.body.appendChild(link);
+      // Create a link element
+      const link = document.createElement('a');
   
-    // Trigger a click on the link to initiate the download
-    link.click();
+      // Set the link's attributes
+      link.href = url;
+      link.download = 'history.txt';
   
-    // Remove the link from the document
-    document.body.removeChild(link);
+      // Append the link to the document body
+      document.body.appendChild(link);
   
-    // Revoke the URL to free up resources
-    URL.revokeObjectURL(url);
+      // Trigger a click on the link to initiate the download
+      link.click();
+  
+      // Remove the link from the document
+      document.body.removeChild(link);
+  
+      // Revoke the URL to free up resources
+      URL.revokeObjectURL(url);
+    }, 7000); // 5000 milliseconds = 5 seconds
   }
   
   // Variable to track the current question index
