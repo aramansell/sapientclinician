@@ -88,7 +88,7 @@ function sendMessage(diagnosing, _person, _message) {
     let person = $('#people').value;
     if (_person == 'Observer') {
         
-        person = 'Observer'
+        person = 'Observer';
     }
     if (_message != null) {
         message = _message;
