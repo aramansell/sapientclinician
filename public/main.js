@@ -83,9 +83,9 @@ function sendMessage(diagnosing, agent) {
     let message = $('#conversation_input').value;
     let person;
   
-    if (agent == "Observer") {
+    if (agent == 'Observer') {
         
-        person = "Observer"
+        person = 'Observer'
     }
     else {
         person = $('#people').value;
@@ -137,7 +137,7 @@ function startConversation() {
 
 
 function downloadTxtFile() {
-    sendMessage(diagnosing, "Observer")
+    sendMessage(diagnosing, 'Observer')
     // Create a Blob with the specified content and MIME type
     const blob = new Blob([message_history.map(a => a.from+"\n\n"+a.message).join("\n\n")], { type: 'text/plain' });
     
