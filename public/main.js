@@ -81,12 +81,14 @@ function addMessageToHistory(from, message, to) {
 
 function sendMessage(diagnosing, agent) {
     let message = $('#conversation_input').value;
+    let person;
+  
     if (agent == "Observer") {
         
-        let person = "Observer"
+        person = "Observer"
     }
     else {
-        let person = $('#people').value;
+        person = $('#people').value;
     }
     if (message.length > 0) 
     {
