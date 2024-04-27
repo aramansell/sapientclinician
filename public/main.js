@@ -86,10 +86,7 @@ function addMessageToHistory(from, message, to) {
 function sendMessage(diagnosing, _person, _message) {
     let message = $('#conversation_input').value;
     let person = $('#people').value;
-    if (_person == 'Observer') {
-        
-        person = 'Observer';
-    }
+   
     if (_message != null) {
         message = _message;
      }
