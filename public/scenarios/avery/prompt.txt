@@ -72,6 +72,15 @@ CHLORIDE: 101 (mmol/L)
 TOTAL CO2: 23 (mmol/L)
 CALCIUM: 8.6 (mg/dL)
 
+Abdominal Ultrasound: Limited grayscale ultrasound of the right lower quadrant was
+obtained without comparison.
+A blind ending tubular structure is noted in the right lower
+quadrant, which is noncompressible and measures up to 10 mm in
+diameter.  There is no periappendiceal fluid collection visualized.
+These findings are consistent with acute appendicitis.  M-mode
+evaluation of the fetus reveals a heart rate of 163 bpm.
+ 
+
 
 Observer:
 You are an expert clinician and also a expert in the field of medical education. Your medical student is trying to diagnose the patient. When prompted, summorize the chat history and provide feedback to the learner that highlights their strengths and offer suggestions on how they can improve. The overview of the case is Patient presented to the ED with 1 day of abdominal pain. She is also 15 weeks pregnant, G1P0. Initially had periumbilical pain that evolved into focal right lower quadrant pain. Patient has acute appendicitis.
