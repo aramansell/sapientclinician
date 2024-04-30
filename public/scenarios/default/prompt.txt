@@ -50,6 +50,12 @@ POTASSIUM: 5.2 (mmol/L)
 CHLORIDE: 101 (mmol/L)
 TOTAL CO2: 23 (mmol/L)
 CALCIUM: 6.4 (mg/dL)
+Albumin: 4.5 g/dL
+TOTAL PROTEIN: 7.1 g/dL
+ALP (Alkaline Phosphatase): 80 U/L
+AST (Aspartate Aminotransferase): 30 U/L
+ALT (Alanine Aminotransferase): 25 U/L
+BILIRUBIN, TOTAL: 0.9 mg/dL
 
 If they order a LDH it is 1150. If they order a uric acid is 9.6. If they order phosphorus it is 4.8. If they order a Flow cytometry /morphology for leukemia and lymphoma markers the result is + myeloid cell lineage with 5% blasts. If they order a Beta HCG for determining pregnancy it is negative. If they order a bone marrow biopsy for leukemia and lymphoma markers, the aspirate shows a hypercellular marrow with 4% blasts. If they order FISH and cytogenetics and/or PCR for Bcr/Abl the resutls are FISH: +196/200 with t(9;22) +20/20 metaphases Cytogenetics is normal: 46 chromosomes and XX (female). 
 

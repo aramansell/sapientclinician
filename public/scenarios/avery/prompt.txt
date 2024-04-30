@@ -52,7 +52,7 @@ KETONES: 160 mg/dL
 BILIRUBIN: Negative
 GLUCOSE: Negative
 
-Complete blood count
+Complete blood count:
 WHITE CELL COUNT: 15.7 (K/cu mm)
 RED CELL COUNT: 4.17 (M/cu mm)
 HEMOGLOBIN: 12.8(g/dL)
@@ -61,9 +61,6 @@ MCV: 87.6 (fL)
 MCHC: 34.9 (g/dL)
 RDW: 13.1 (%)
 PLATELET COUNT: 214 (K/cu mm)
-
-
-If they order a CMP or complete metabolic panal give them all values (not just the ones listed below, but all possible values) usualy found in a healthy cmp but replace the following values. When you report the finding include these plus the norma findings. List each normal finding individually. Don't say something like "all other parameters were normal" It is important the user can distiguish between normal and abnormal findings on their own.
 
 Basic Metabolic Panel:
 GLUCOSE: 98 (mg/dL)
@@ -74,6 +71,12 @@ POTASSIUM: 3.3 (mmol/L)
 CHLORIDE: 101 (mmol/L)
 TOTAL CO2: 23 (mmol/L)
 CALCIUM: 8.6 (mg/dL)
+Albumin: 4.5 g/dL
+Total Protein: 7.1 g/dL
+ALP (Alkaline Phosphatase): 80 U/L
+AST (Aspartate Aminotransferase): 30 U/L
+ALT (Alanine Aminotransferase): 25 U/L
+Bilirubin, Total: 0.9 mg/dL
 
 Abdominal Ultrasound: Limited grayscale ultrasound of the right lower quadrant was
 obtained without comparison. A blind ending tubular structure is noted in the right lower
