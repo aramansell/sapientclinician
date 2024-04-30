@@ -43,7 +43,7 @@
             checkbox.addEventListener("change", (event) => {
               // Update the boolean variable based on the checkbox state
               isDiagnosed = event.target.checked;
-              dropdown.value = 'Observer';
+              dropdown.value = 'Notes';
               // Enable or disable the dropdown accordingly
               dropdown.disabled = isDiagnosed;
               checkbox.disabled = isDiagnosed;

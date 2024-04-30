@@ -188,7 +188,7 @@ function downloadTxtFile() {
     
     function nextQuestion(){
         
-    
+        sendMessage(true, 'Notes', null);
         // Check if we've reached the end of the array
         if (currentQuestionIndex >= questions.length) {
         currentQuestionIndex = 0; // Reset to the beginning
