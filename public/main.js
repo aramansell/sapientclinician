@@ -46,6 +46,12 @@ function init() {
         } else {
             document.querySelector("#people > option[value='Lab']").outerHTML = '';
         }
+
+        if (actorsNames['Observer']) {
+            document.querySelector("#people > option[value='Observer']").innerText = actorsNames['Observer'];
+        } else {
+            document.querySelector("#people > option[value='']").outerHTML = '';
+        }
         
 
         questions = questionsText.split('\n').filter(q => q.length > 0).map(a => a.trim());
@@ -87,6 +93,10 @@ function sendMessage(diagnosing, _person, _message) {
    
     if (_message != null) {
         message = _message;
+    }
+    
+    if (_person != null) {
+        person = _person;
      }
     
     if (message.length > 0) 
