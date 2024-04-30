@@ -48,8 +48,6 @@ function init() {
         }
 
         if (actorsNames['Observer']) {
-            document.querySelector("#people > option[value='Observer']").innerText = actorsNames['Observer'];
-        } else {
             document.querySelector("#people > option[value='']").outerHTML = '';
         }
         
