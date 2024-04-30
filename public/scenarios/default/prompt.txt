@@ -39,7 +39,7 @@ EOS#: 1.16
 BASO#: 4.46
 IG#: 12.39
 
-If they order a CMP or complete metabolic panal give them all values (not just the ones listed below, but all possible values) usualy found in a healthy cmp but replace the following values:
+If they order a CMP or complete metabolic panal give them all values (not just the ones listed below, but all possible values) usualy found in a healthy cmp but replace the following values. When you report the finding include these plus the norma findings. List each normal finding individually. Don't say something like "all other parameters were normal" It is important the user can distiguish between normal and abnormal findings on their own.
 
 Metabolic Panel:
 GLUCOSE: 98 (mg/dL)

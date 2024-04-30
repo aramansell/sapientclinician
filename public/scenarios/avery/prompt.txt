@@ -62,6 +62,9 @@ MCHC: 34.9 (g/dL)
 RDW: 13.1 (%)
 PLATELET COUNT: 214 (K/cu mm)
 
+
+If they order a CMP or complete metabolic panal give them all values (not just the ones listed below, but all possible values) usualy found in a healthy cmp but replace the following values. When you report the finding include these plus the norma findings. List each normal finding individually. Don't say something like "all other parameters were normal" It is important the user can distiguish between normal and abnormal findings on their own.
+
 Basic Metabolic Panel:
 GLUCOSE: 98 (mg/dL)
 BUN: 6 (mg/dL)
