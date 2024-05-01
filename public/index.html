@@ -57,21 +57,20 @@
                 console.log("Dropdown is now disabled!");
                 // You could reset the dropdown's value or perform other actions here
               }
-              });
+            });
 
-              // Get the input field
-              var input = document.getElementById("conversation_input");
+            var input = document.getElementById("conversation_input");
 
-              // Execute a function when the user presses a key on the keyboard
-              input.addEventListener("keypress", function(event) {
-                // If the user presses the "Enter" key on the keyboard
-                if (event.key === "Enter") {
-                  // Cancel the default action, if needed
-                  event.preventDefault();
-                  // Trigger the button element with a click
-                  document.getElementById("conversation_send").click();
-                }
-              });
+            // Execute a function when the user presses a key on the keyboard
+            input.addEventListener("keydown", function(event) {
+              // If the user presses the "Enter" key or the "Return" key on a Mac
+              if (event.key === "Enter" || event.keyCode === 13) {
+                // Cancel the default action, if needed
+                event.preventDefault();
+                // Trigger the button element with a click
+                document.getElementById("conversation_send").click();
+              }
+            });
 
             </script>
             <textarea id="conversation_input" onchange="sendMessage(isDiagnosed, null)" placeholder="Type your message here..."></textarea>
