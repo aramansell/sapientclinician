@@ -104,6 +104,47 @@ exports.sendMessage = onRequest({ secrets: ["OPENAI_API_KEY"] }, (request, respo
       }));
     }
 
+    function openAIFormatToString(object) {
+      var string = "";
+      object.forEach((item) => {
+        string += "role: " + item.role + "; message: " + item.content + "\n";
+      });
+      return string;
+    }
+
+    async function shortenMessageHistory(message_history)
+    {
+      var message = openAIFormatToString(convertMessageHistoryToOpenAIFormat(message_history));
+      return openai.chat.completions.create({
+        messages:[
+          {"role": "system", "content": "consolidate this but keep it in the same format"},
+          {"role": "user", "content": message}
+        ],
+        model: 'gpt-3.5-turbo-0125'
+      });
+    
+    }
+
+    shortenMessageHistory(message_history).then((result) => {
+      var summary = JSON.stringify({ message: result.choices[0].message.content });
+      openai.chat.completions.create({
+        messages:[
+          {"role": "system", "content": system_message},
+          {"role": "user", "content": summary}
+        ],
+        model: 'gpt-4-turbo'
+      }).then((result2) => {
+        response.status(200).send(JSON.stringify({ message: result.choices[0].message.content }));
+      }).catch(function (error) {
+        logger.error(error);
+        response.status(500).send("Error 500: Internal Server Error");
+      });
+    }).catch(function (error) {
+      logger.error(error);
+      response.status(500).send("Error 500: Internal Server Error");
+    });
+
+    /*
     openai.chat.completions.create({
       messages: convertMessageHistoryToOpenAIFormat(message_history),
       model: 'gpt-4-turbo',
@@ -115,6 +156,7 @@ exports.sendMessage = onRequest({ secrets: ["OPENAI_API_KEY"] }, (request, respo
       logger.error(error);
       response.status(500).send("Error 500: Internal Server Error");
     });
+    */
 
 
   } else {
