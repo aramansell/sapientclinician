@@ -4,4 +4,4 @@ Select who you want to talk with, by selecting Ob/Gyn, Patient or submitting req
 
 After several interactions with the Patient, Clinician or Lab you must submit your Diagnosis.
 
-The patient presents with 1 day of abdominal pain that was accompanied by anorexia, nausea, and vomiting.
+The patient is pregnant and presents with a severe headache.
