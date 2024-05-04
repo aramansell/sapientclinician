@@ -7,7 +7,7 @@
 <body>
   <form id="scenarioForm">
     <div>To upload a previous scenario, click here: </div>
-    <input type="file" id="fileInput" accept=".txt">
+    <input type="file" id="fileInput" accept=".json">
     
     <div id="assessment">
       <h2>What is the purpose of this assessment:</h2>
@@ -63,7 +63,7 @@
       const reader = new FileReader();
       reader.onload = function(e) {
         const fileContent = e.target.result;
-        populateFormFromFile(fileContent);
+        populateFormFromJSON(fileContent);
       }
       reader.readAsText(file);
       }
