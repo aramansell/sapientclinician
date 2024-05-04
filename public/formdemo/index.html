@@ -92,78 +92,60 @@
   }
 }
 
-function populateFormFromFile(fileContent) {
-      const formData = new FormData(document.getElementById('scenarioForm'));
-      const lines = fileContent.trim().split('\n\n');
-      for (const line of lines) {
-        const [key, value] = line.split(': ');
-        if (key && value) {
-          const formElement = document.querySelector(`[name="${key}"]`);
-          if (formElement) {
-            if (formElement.type === 'checkbox') {
-              formElement.checked = value === 'on';
-            } else {
-              formElement.value = value;
-            }
-          }
-        }
-      }
+  const fileInput = document.getElementById('fileInput');
+  fileInput.addEventListener('change', handleFileUpload);
+
+  function createDropdown(parentElement, elementId, elementName, elementType, questionText, options) {
+    const container = document.createElement('div');
+    const questionElement = document.createElement('p');
+    questionElement.textContent = questionText;
+    container.appendChild(questionElement);
+
+    const dropdownElement = document.createElement('select');
+    dropdownElement.id = elementId;
+    dropdownElement.name = elementName;
+    dropdownElement.type = elementType;
+
+    for (const option of options) {
+      const optionElement = document.createElement('option');
+      optionElement.value = option.value;
+      optionElement.text = option.text;
+      dropdownElement.add(optionElement);
+    }
+  
+    container.appendChild(dropdownElement);
+    document.createElement('br');
+    parentElement.appendChild(container);
+  }
+
+  function createCheckboxGroup(parentElement, groupName, questionText, options) {
+    const container = document.createElement('div');
+    const questionElement = document.createElement('p');
+    questionElement.textContent = questionText;
+    container.appendChild(questionElement);
+
+    const checkboxContainer = document.createElement('div');
+
+    for (const option of options) {
+      const checkboxWrapper = document.createElement('div');
+      const checkboxElement = document.createElement('input');
+      checkboxElement.type = 'checkbox';
+      checkboxElement.name = groupName;
+      checkboxElement.value = option.value;
+      checkboxElement.id = `${groupName}-${option.value}`;
+
+      const labelElement = document.createElement('label');
+      labelElement.textContent = option.text;
+      labelElement.setAttribute('for', `${groupName}-${option.value}`);
+
+      checkboxWrapper.appendChild(checkboxElement);
+      checkboxWrapper.appendChild(labelElement);
+      checkboxContainer.appendChild(checkboxWrapper);
     }
 
-    const fileInput = document.getElementById('fileInput');
-    fileInput.addEventListener('change', handleFileUpload);
-
-    function createDropdown(parentElement, elementId, elementName, elementType, questionText, options) {
-      const container = document.createElement('div');
-      const questionElement = document.createElement('p');
-      questionElement.textContent = questionText;
-      container.appendChild(questionElement);
-
-      const dropdownElement = document.createElement('select');
-      dropdownElement.id = elementId;
-      dropdownElement.name = elementName;
-      dropdownElement.type = elementType;
-
-      for (const option of options) {
-        const optionElement = document.createElement('option');
-        optionElement.value = option.value;
-        optionElement.text = option.text;
-        dropdownElement.add(optionElement);
-      }
-    
-      container.appendChild(dropdownElement);
-      document.createElement('br');
-      parentElement.appendChild(container);
-    }
-
-    function createCheckboxGroup(parentElement, groupName, questionText, options) {
-      const container = document.createElement('div');
-      const questionElement = document.createElement('p');
-      questionElement.textContent = questionText;
-      container.appendChild(questionElement);
-
-      const checkboxContainer = document.createElement('div');
-
-      for (const option of options) {
-        const checkboxWrapper = document.createElement('div');
-        const checkboxElement = document.createElement('input');
-        checkboxElement.type = 'checkbox';
-        checkboxElement.name = groupName;
-        checkboxElement.value = option.value;
-        checkboxElement.id = `${groupName}-${option.value}`;
-
-        const labelElement = document.createElement('label');
-        labelElement.textContent = option.text;
-        labelElement.setAttribute('for', `${groupName}-${option.value}`);
-
-        checkboxWrapper.appendChild(checkboxElement);
-        checkboxWrapper.appendChild(labelElement);
-        checkboxContainer.appendChild(checkboxWrapper);
-      }
-
-      container.appendChild(checkboxContainer);
-      parentElement.appendChild(container);
-    }
+    container.appendChild(checkboxContainer);
+    parentElement.appendChild(container);
+  }
 
   function createTextarea(parentElement, elementId, placeholderText, labelText, rows = 1, cols = 35, checkboxes = []) {
     const container = document.createElement('div');
