@@ -11,7 +11,9 @@
     
     <div id="assessment">
       <h2>What is the purpose of this assessment:</h2>
+      <input type="text" id="fileName" name="fileName" required>
       <div id="assessmentContent"></div>
+
     </div>
     
     <div id="learningTarget">
@@ -67,7 +69,30 @@
       }
     }
 
-    function populateFormFromFile(fileContent) {
+  function populateFormFromJSON(fileContent) {
+  const formData = new FormData(document.getElementById('scenarioForm'));
+  const jsonData = JSON.parse(fileContent);
+
+  for (const key in jsonData) {
+    const formElement = document.querySelector(`[name="${key}"]`);
+    if (formElement) {
+      if (formElement.type === 'checkbox') {
+        formElement.checked = jsonData[key].includes(formElement.value);
+      } else if (Array.isArray(jsonData[key])) {
+        // Handle checkbox groups
+        const checkboxGroup = jsonData[key];
+        const checkboxElements = document.querySelectorAll(`[name="${key}[]"`);
+        checkboxElements.forEach(checkbox => {
+          checkbox.checked = checkboxGroup.includes(checkbox.value);
+        });
+      } else {
+        formElement.value = jsonData[key];
+      }
+    }
+  }
+}
+
+function populateFormFromFile(fileContent) {
       const formData = new FormData(document.getElementById('scenarioForm'));
       const lines = fileContent.trim().split('\n\n');
       for (const line of lines) {
@@ -213,7 +238,7 @@ function createTextareaGroup(parentElement, groupName, questionText, inputs) {
 
 const assessmentElement = document.getElementById('assessmentContent');
 
-createTextarea(assessmentElement, 'fileName', 'Chromic Myeloid Leukemia', 'File Name:');
+
 const purpose = [
   { value: 'Formative Assessment', text: 'Formative Assessment' },
   { value: 'Summative Assessment', text: 'Summative Assessment' },
@@ -521,6 +546,46 @@ form.addEventListener('submit', (event) => {
   generateTxtFile();
 });
 
+function generateJSONFile() {
+  const formData = new FormData(document.getElementById('scenarioForm'));
+  const jsonData = {};
+
+  // Get the value of the 'fileName' input field
+  const fileNameInput = document.getElementById('fileName');
+  let fileName = fileNameInput.value.trim();
+
+  // Check if the fileName input is empty
+  if (fileName === '') {
+    alert('Please enter a file name.');
+    fileNameInput.focus();
+    return;
+  }
+
+  fileName += '.json';
+
+  for (const [key, value] of formData.entries()) {
+    if (value instanceof File) {
+      // Handle file inputs separately
+      jsonData[key] = value.name;
+    } else if (key.includes('[]')) {
+      // Handle checkbox groups
+      const groupName = key.replace('[]', '');
+      if (!jsonData[groupName]) {
+        jsonData[groupName] = [];
+      }
+      jsonData[groupName].push(value);
+    } else {
+      jsonData[key] = value;
+    }
+  }
+
+  const blob = new Blob([JSON.stringify(jsonData, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.download = fileName;
+  link.href = url;
+  link.click();
+}
 /*
 function sendFormDataToServer(formData) {
   const requestOptions = {
