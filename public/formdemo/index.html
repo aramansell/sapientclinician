@@ -586,6 +586,12 @@ function generateJSONFile() {
   link.href = url;
   link.click();
 }
+
+const formjson = document.getElementById('scenarioForm');
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  generateJSONFile();
+});
 /*
 function sendFormDataToServer(formData) {
   const requestOptions = {
