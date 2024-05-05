@@ -232,10 +232,11 @@ const learningTargetElement = document.getElementById('learningTargetContent');
 function createTextareaOnClick() {
   const inputGroupOptions = [
     { id: `LearningObjective ${objectiveCount}`, placeholder: 'The learner will be able to...', label: `Learning Objective #${objectiveCount} (e.g., submission of accurate diagnosis, patient interviewing knowledge & skills)` },
-    { id: 'mastery', placeholder: 'Mastery looks like...', label: 'Level 4' },
-    { id: 'proficiency',  placeholder: 'Proficiency looks like...', label: 'Level 3' },
-    { id: 'developing',  placeholder: 'Developing looks like...', label: 'Level 2' },
-    { id: 'novice', placeholder: 'Novice looks like...', label: 'Level 1' }
+    { id: 'Novice', placeholder: 'Mastery looks like...', label: 'Level A' },
+    { id: 'AdvancedBiginner', placeholder: 'Mastery looks like...', label: 'Level B' },
+    { id: 'Competent',  placeholder: 'Proficiency looks like...', label: 'Level C' },
+    { id: 'Proficient',  placeholder: 'Developing looks like...', label: 'Level D' },
+    { id: 'Exemplary', placeholder: 'Novice looks like...', label: 'Level E' }
   ];
 
   createTextareaGroup(learningTargetElement, `objective${objectiveCount}`, '', inputGroupOptions);
