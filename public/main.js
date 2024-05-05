@@ -144,7 +144,7 @@ function startConversation() {
 
 
 function downloadTxtFile() {
-    sendMessage(false, 'Observer', 'Provide a summery of the text and give feedback on the conversation history');
+    sendMessage(false, 'Observer', 'Provide a summary of the text and give feedback on the conversation history');
   
     setTimeout(function() {
       // Create a Blob with the specified content and MIME type
