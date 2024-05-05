@@ -171,7 +171,7 @@ function downloadTxtFile() {
   
       // Revoke the URL to free up resources
       URL.revokeObjectURL(url);
-    }, 15000); // 5000 milliseconds = 5 seconds
+    }, 20000); // 5000 milliseconds = 5 seconds
   }
   
   // Variable to track the current question index
