@@ -106,7 +106,7 @@ exports.sendMessage = onRequest({ secrets: ["OPENAI_API_KEY"] }, (request, respo
 
     openai.chat.completions.create({
       messages: convertMessageHistoryToOpenAIFormat(message_history),
-      model: 'gpt-4-turbo',
+      model: 'gpt-4o',
     }).then(function (result) {
 
       response.status(200).send(JSON.stringify({ message: result.choices[0].message.content }));
