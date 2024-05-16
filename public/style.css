@@ -83,12 +83,13 @@ body {
     resize: none;
     font-family: inherit;
     flex-grow: 1;
-    height: 60px; /* Because of flex, this affects the height of the whole row */
+    height: 60px;
+    margin-right: 6px ; /* Because of flex, this affects the height of the whole row */
 }
 
 .conversation_controls_bottom button {
     font-size: 22px;
-    padding: 16px 16px;
+    padding: 8px 6px;
 }
 
 .conversation_controls_bottom input:last-child{
