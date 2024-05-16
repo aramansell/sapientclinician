@@ -50,6 +50,10 @@ function init() {
         if (actorsNames['Observer']) {
             document.querySelector("#people > option[value='']").outerHTML = '';
         }
+
+        if (actorsNames['Action']) {
+            document.querySelector("#people > option[value='']").outerHTML = '';
+        }
         
 
         questions = questionsText.split('\n').filter(q => q.length > 0).map(a => a.trim());
