@@ -153,7 +153,7 @@ body {
   button {
     background-color: lightblue;
     color: black;
-    padding: 10px 20px;
+    margin-right: 10px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
