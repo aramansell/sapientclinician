@@ -88,9 +88,13 @@ body {
 
 .conversation_controls_bottom button {
     font-size: 22px;
-    padding: 3px 6px;
+    padding: 16px 16px;
 }
-  
+
+.conversation_controls_bottom input:last-child{
+  margin-right:0px;
+}
+
   form {
     max-width: 800px;
     margin: 0 auto;
