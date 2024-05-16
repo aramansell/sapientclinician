@@ -165,7 +165,13 @@ body {
   }
   
   button[type="submit"] {
-    float: right;
+    background-color: lightblue;
+    color: black;
+    margin-right: 30px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
   }
   
   /* Responsive Styles */
