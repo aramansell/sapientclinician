@@ -73,7 +73,7 @@
             });
 
             </script>
-            <textarea id="conversation_input" onkeydown="if (event.key == 'Enter') {sendMessage(isDiagnosed, null);event.preventDefault();event.stopPropagation();}" placeholder="Type your message here..."></textarea>
+            <textarea id="conversation_input" onkeydown="if (event.key == 'Enter' && !event.shiftKey) {sendMessage(isDiagnosed, null);event.preventDefault();event.stopPropagation();}" placeholder="Type your message here..."></textarea>
             <button  id="conversation_send" onclick="sendMessage(isDiagnosed, null )">Send</button>
             <button  id="conversation_action" onclick="sendMessage(isDiagnosed, 'Physical Exam', '**Action** You performed a physical exam.')">Perform Physical</button>
             <button  id="download_history" onclick="downloadTxtFile()">End Scenario</button>
