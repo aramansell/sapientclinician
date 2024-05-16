@@ -196,7 +196,7 @@ function downloadTxtFile() {
         // Check if we've reached the end of the array
         if (currentQuestionIndex >= questions.length) {
         currentQuestionIndex = 0; // Reset to the beginning
-        alert("You've completed the assessment, be sure to click Finish Exam before closing window!");
+        alert("You've completed the assessment, be sure to click End Scenario before closing window!");
         } else {
         displayQuestion();
         }
