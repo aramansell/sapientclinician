@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Create a new scenario:</title>
+  <link rel='stylesheet' type='text/css' href='style.css' />
+</head>
+<body>
+  <form id="scenarioForm">
+    <div id="assessment">
+      <h2>What is the purpose of this assessment:</h2>
+      <input type="text" id="fileName" name="fileName" required>
+      <div id="assessmentContent"></div>
+
+    </div>
+    
+    <div id="learningTarget">
+      <h2>Learning Targets:</h2>
+      <div>Sapient Clinician will give immediate feedback on any learning targets you provide. <br>
+        The assessment will evaluate how well the learner met the description in the rubric you create.</div>
+      <div id="learningTargetContent"></div>
+      <button type="button" onclick="createTextareaOnClick()">+ New Learning Target</button>
+    </div>
+    
+    <div id="story">
+      <h2>Let's start developing the story:</h2>
+      <div><b>**learner will not recieve any information denoted by an * unless they ask the patient actor for the information directly.**</b></div>
+      <div id="storyContent"></div> 
+    </div> 
+    
+    <div id="facts">
+      <h2>Now let's add in some facts and data:</h2>
+      <div id="factsContent"></div> 
+    </div> 
+
+    <div id="plan">
+      <h2>Now let's create the assessment and plan of the visit:</h2>
+      <div>This section indicates what you hope the learner will determine by the end of the assessment.</div>
+      <div id="planContent"></div>
+      <button type="button" onclick="createQuestionOnClick()">+ New Question</button> 
+      <br>
+      <br>
+    </div> 
+    <!--
+    <div id="rubric">
+      <h2>Finally, let's build the rubric:</h2>
+      <div id="rubricContent"></div>
+    </div>
+    -->
+  
+    
+
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+
+    function handleFileUpload(event) {
+      const file = event.target.files[0];
+      if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        const fileContent = e.target.result;
+        populateFormFromJSON(fileContent);
+      }
+      reader.readAsText(file);
+      }
+    }
+
+var thing = {"fileName":"Acute appendicitis ","purpose":"Formative Assessment","who_is_the_learner":"First year resident","Student-facing goal statement":"","objective1-LearningObjective 1":"\nLearner provides patient centered care.","objective1-Novice":"Accesses data, gathers history, and\nperforms a standard PE; generates\na basic DDx and orders testing\nwithout specialty-specific DDx. With\nassistance, formulates a\nmanagement plan for patients\nwithout comorbidities; adjusts\nplans according to standard\nguidelines and toxicities","objective1-AdvancedBeginner":"With assistance, gathers a disease-\nspecific history and performs a\ndisease-specific PE; interprets initial\ndiagnostic studies to generate a\nspecialty-specific DDx; determines\nstage of disorder; formulates a\nmanagement plan using decision-\nsupport tools for patients without\ncomorbidities; adjusts plans\naccording to standard guidelines\nand toxicities","objective1-Competent":"Accesses data from multiple\nsources and collects disease-specific\nhistory; completes a disease-\nspecific PE; orders advanced\ndiagnostic studies for common\ndisorders when appropriate;\ndetermines clinical comorbidities.\nFormulates a management plan\nwith consideration of disease and\npatient factors and enrollment in\nclinical trials; adjusts plans based on\nresponse to treatment, side effects,\nand comorbidities.","objective1-Proficient":"Consistently synthesizes data from\nmultiple sources; collects a disease-\nspecific history; consistently\ncompletes a disease-specific PE;\ndiagnoses uncommon disorders and\ndetermines disease severity using\nevidence-based studies;\nconsistently formulates\nmanagement plans that include\nconsideration of clinical trial\nenrollment and conform to patient\npreferences and goals of care;\nadjusts plans based on anticipation\nand recognition of subtle toxicities,\nlong-term sequelae, and/or changes\nin patient preferences and goals.","objective1-Exemplary":"Role models gathering and\nsynthesis of clinical information and\nthe assignments of stage and\ndisease severity, informed by\nevidence-based studies and\nguidelines for specialty disorder.\nServes as an expert in formulating\nmanagement plans and developing\nand implementing pathways that\ninfluence management plans.","patientData-name":"Avery","patientData-preferedName":"","patientData-preferedPronouns":"She/her/hers","patientData-age":"31 years old","patientData-sex":"female","patientData-message":"Patient presented to the ED with 1 day of abdominal pain. She is also 15 weeks pregnant, G1P0. Initially had periumbilical pain that evolved into focal right lower quadrant pain. Patient has acute appendicitis.","patientData-additionalFamilyActors":"Significant other","patientData-status":"Patient is alert and oriented, in moderate distress with worsening abdominal pain","patientData-temperment":"Phlegmatic ","patientData-physicalDisability":"","patientData-IntelectualDisability":"","setting":"EmergencyRoom","Reason_for_visit":"Patient presents with 1 day of abdominal pain that was accompanied by anorexia, nausea, and vomiting. ","History_of_Present_Illness":"Patient initially called triage nurse line with new onset of abdominal pain over the past 4 hours which started late afternoon, early evening towards the end of her work shift. She initially attributed symptoms to gas/bloating, but also reports having lost her appetite, so only had broth for dinner. After going to bed she woke up feeling more uncomfortable but felt concerned about her symptoms. At that time, she denied nausea, vomiting, diarrhea, constipation, fever. She reported no vaginal bleeding, loss of fluids or any pain with urination. She was advised that it most likely is related to gas however if she developed any other symptoms or worsening discomfort to call back.","patientData-general":"Patient is 15 weeks pregnant and therefore has noted about 5-7 lb weight gain over the past couple months along with progressive, at times severe fatigue. Developed chills over the past 6 hours.","weight gain":"weight gain","fever":"fever","fatigue":"fatigue","patientData-head":"","patientData-eyes":"","patientData-ears":"","patientData-nose":"","patientData-throat":"","patientData-neck":"","patientData-respiratory":"","patientData-cardiovascular":"","patientData-gastrointestinal":"","nausea":"nausea","vomiting":"vomiting","abdominal pain":"abdominal pain","diarrhea":"diarrhea","patientData-genitourinary":"She has been drinking more water during her pregnancy and has noted frequent urination but no dysuria or hematuria.","urinary frequency":"urinary frequency","patientData-musculoskeletal":"","patientData-derm":"","patientData-neurological":"","patientData-psychiatric":"","patientData-endocrine":"loss of appetite x 1 day.","changes in appetite":"changes in appetite","patientData-hematologic":"","history of anemia":"history of anemia","patientData-allergic/immunologic":"Sulfa which causes a rash","historyQuestions-past_medical":"Significant for recurrent ear infections as a child resulting in bilateral tympanoplasties during childhood. Patient otherwise has been generally healthy.","historyQuestions-family_medical_history":"Mother with history of breast cancer. Father with COPD. Maternal grandfather with colorectal cancer. Maternal grandmother with multiple sclerosis. ","historyQuestions-social_history":"Has significant other. Works as a nurse on the inpatient oncology floor. Previous smoker for several years during college. Occasional ETOH use, currently not drinking during pregnancy. ","historyQuestions-social_determinants":"Positive for adverse childhood experiences, witnessed violence in the home.","historyQuestions-medications":"prenatal vitamin once daily","historyQuestions-allergic":"sulfa","physicalExamData-vitals":"Temperature: 36 C, heart rate: 86, blood pressure: 128/66, oxygen saturation: 100%, weight: 118 lbs.","physicalExamData-generalPE":"Alert, non-toxic-appearing, but obviously uncomfortable.","physicalExamData-HEENTPE":"Atraumatic, pupils equal, round, reactive to light and accommodation, no icterus, no sinus tenderness, neck supple.","physicalExamData-lungsPE":"Clear to auscultation bilaterally","physicalExamData-heartPE":"Regular rate and rhythm, no murmurs/gallops/rubs","physicalExamData-abdomenPE":"Soft, tender to palpitation in the lower right quadrant, with guarding.  No rigidity.","physicalExamData-extremitiesPE":"No edema, moves all extremities bilaterally.","physicalExamData-lymphNodesPE":"No lymphadenopathy ","physicalExamData-skinPE":"Warm and well-perfused.","physicalExamData-neuroPE":"Normal affect, CN II-XII grossly intact","physicalExamData-otherPE":"","Data":"Urinalysis \n\nColor: Amber, Hazy\n\nLEUKOCYTES: Negative\nNITRITES: Negative\nUROBILINOGEN: 0.2 mg/dL\nPROTEIN: Trace\nPH: 5\nBLOOD: Moderate\nSPECIFIC GRAVITY: 1.25\nKETONES: 160 mg/dL\nBILIRUBIN: Negative\nGLUCOSE: Negative\n\nComplete blood count:\nWHITE CELL COUNT: 15.7 (K/cu mm)\nRED CELL COUNT: 4.17 (M/cu mm)\nHEMOGLOBIN: 12.8(g/dL)\nHEMATOCRIT: 36.5 (%)\nMCV: 87.6 (fL)\nMCHC: 34.9 (g/dL)\nRDW: 13.1 (%)\nPLATELET COUNT: 214 (K/cu mm)\n\nBasic Metabolic Panel:\nGLUCOSE: 98 (mg/dL)\nBUN: 6 (mg/dL)\nCREATININE,PLASMA: 0.70 (mg/dL)\nSODIUM: 131 (mmol/L)\nPOTASSIUM: 3.3 (mmol/L)\nCHLORIDE: 101 (mmol/L)\nTOTAL CO2: 23 (mmol/L)\nCALCIUM: 8.6 (mg/dL)\nAlbumin: 4.5 g/dL\nTotal Protein: 7.1 g/dL\nALP (Alkaline Phosphatase): 80 U/L\nAST (Aspartate Aminotransferase): 30 U/L\nALT (Alanine Aminotransferase): 25 U/L\nBilirubin, Total: 0.9 mg/dL\n\nAbdominal Ultrasound: Limited grayscale ultrasound of the right lower quadrant was obtained without comparison. A blind ending tubular structure is noted in the right lower quadrant, which is non-compressible and measures up to 10 mm in diameter.  There is no periappendiceal fluid collection visualized. These findings are consistent with acute appendicitis.  M-mode evaluation of the fetus reveals a heart rate of 163 bpm.\n ","Diagnosis":"acute appendicitis","Addition_diagnosis":"gastroenteritis\n","Treatment":"empiric IV antibiotics \nlaproscopic appendectomy","Plan":"","followUpQuestions-question1":"","followUpQuestions-question2":"","followUpQuestions-question3":""};
+
+    setTimeout(() => {
+      populateFormFromJSON(thing);
+    }, 100);
+
+  function populateFormFromJSON(fileContent) {
+  const formData = new FormData(document.getElementById('scenarioForm'));
+  const jsonData = fileContent;
+
+  for (const key in jsonData) {
+    const formElement = document.querySelector(`[name="${key}"]`);
+    if (formElement) {
+      if (formElement.type === 'checkbox') {
+        formElement.checked = jsonData[key].includes(formElement.value);
+      } else if (Array.isArray(jsonData[key])) {
+        // Handle checkbox groups
+        const checkboxGroup = jsonData[key];
+        const checkboxElements = document.querySelectorAll(`[name="${key}[]"`);
+        checkboxElements.forEach(checkbox => {
+          checkbox.checked = checkboxGroup.includes(checkbox.value);
+        });
+      } else {
+        formElement.value = jsonData[key];
+      }
+    }
+  }
+}
+
+  // const fileInput = document.getElementById('fileInput');
+  // fileInput.addEventListener('change', handleFileUpload);
+
+  function createDropdown(parentElement, elementId, elementName, elementType, questionText, options) {
+    const container = document.createElement('div');
+    const questionElement = document.createElement('p');
+    questionElement.textContent = questionText;
+    container.appendChild(questionElement);
+
+    const dropdownElement = document.createElement('select');
+    dropdownElement.id = elementId;
+    dropdownElement.name = elementName;
+    dropdownElement.type = elementType;
+
+    for (const option of options) {
+      const optionElement = document.createElement('option');
+      optionElement.value = option.value;
+      optionElement.text = option.text;
+      dropdownElement.add(optionElement);
+    }
+  
+    container.appendChild(dropdownElement);
+    document.createElement('br');
+    parentElement.appendChild(container);
+  }
+
+  function createCheckboxGroup(parentElement, groupName, questionText, options) {
+    const container = document.createElement('div');
+    const questionElement = document.createElement('p');
+    questionElement.textContent = questionText;
+    container.appendChild(questionElement);
+
+    const checkboxContainer = document.createElement('div');
+
+    for (const option of options) {
+      const checkboxWrapper = document.createElement('div');
+      const checkboxElement = document.createElement('input');
+      checkboxElement.type = 'checkbox';
+      checkboxElement.name = groupName;
+      checkboxElement.value = option.value;
+      checkboxElement.id = `${groupName}-${option.value}`;
+
+      const labelElement = document.createElement('label');
+      labelElement.textContent = option.text;
+      labelElement.setAttribute('for', `${groupName}-${option.value}`);
+
+      checkboxWrapper.appendChild(checkboxElement);
+      checkboxWrapper.appendChild(labelElement);
+      checkboxContainer.appendChild(checkboxWrapper);
+    }
+
+    container.appendChild(checkboxContainer);
+    parentElement.appendChild(container);
+  }
+
+  function createTextarea(parentElement, elementId, placeholderText, labelText, rows = 1, cols = 35, checkboxes = []) {
+    const container = document.createElement('div');
+
+    // Create the label element
+    const labelElement = document.createElement('label');
+    labelElement.setAttribute('for', elementId);
+    labelElement.textContent = labelText;
+    container.appendChild(labelElement);
+
+    container.appendChild(document.createElement('br')); // Add a new line after the label
+
+    // Create the textarea element
+    const textareaElement = document.createElement('textarea');
+    textareaElement.setAttribute('id', elementId);
+    textareaElement.setAttribute('name', elementId);
+    textareaElement.setAttribute('placeholder', placeholderText);
+    textareaElement.rows = rows;
+    textareaElement.cols = cols;
+    textareaElement.style.width = '80%';
+    textareaElement.style.padding = '5px';
+    container.appendChild(textareaElement);
+
+    // Create checkboxes, if provided
+    if (checkboxes.length > 0) {
+      const checkboxContainer = document.createElement('div');
+      checkboxes.forEach((checkbox, index) => {
+        const checkboxWrapper = document.createElement('div');
+        const checkboxElement = document.createElement('input');
+        checkboxElement.type = 'checkbox';
+        checkboxElement.name = checkbox.value;
+        checkboxElement.value = checkbox.value;
+        checkboxElement.id = checkbox.value;
+
+        const labelElement = document.createElement('label');
+        labelElement.textContent = checkbox.text;
+        labelElement.setAttribute('for', `${elementId}-checkbox-${index}`);
+
+        checkboxWrapper.appendChild(checkboxElement);
+        checkboxWrapper.appendChild(labelElement);
+        checkboxContainer.appendChild(checkboxWrapper);
+        // Add a new line after each checkbox
+        //checkboxContainer.appendChild(document.createElement('br')); 
+      });
+      container.appendChild(checkboxContainer);
+    }
+
+    // Append the container to the parent element
+    parentElement.appendChild(container);
+}
+
+function createTextareaGroup(parentElement, groupName, questionText, inputs) {
+  const container = document.createElement('div');
+  const questionElement = document.createElement('p');
+  questionElement.textContent = questionText;
+  container.appendChild(questionElement);
+
+  for (const input of inputs) {
+    createTextarea(
+      container,
+      `${groupName}-${input.id}`,
+      input.placeholder,
+      input.label,
+      input.rows || 3,
+      input.cols || 30,
+      input.checkboxes || [] // Pass the checkboxes array or an empty array
+    );
+  }
+
+  parentElement.appendChild(container);
+}
+
+const assessmentElement = document.getElementById('assessmentContent');
+
+
+const purpose = [
+  { value: 'Formative Assessment', text: 'Formative Assessment' },
+  { value: 'Summative Assessment', text: 'Summative Assessment' },
+];
+createDropdown(assessmentElement, 'purpose', 'purpose', 'text', 'What Category is this assessment?', purpose);
+
+let objectiveCount = 1;
+const learningTargetElement = document.getElementById('learningTargetContent');
+function createTextareaOnClick() {
+  const inputGroupOptions = [
+    { id: `LearningObjective ${objectiveCount}`, placeholder: 'The learner will be able to...', label: `Learning Objective #${objectiveCount} (e.g., submission of accurate diagnosis, patient interviewing knowledge & skills)` },
+    { id: 'Novice', placeholder: 'Novice looks like...', label: 'Level A' },
+    { id: 'AdvancedBeginner', placeholder: 'Advanced Beginner looks like...', label: 'Level B' },
+    { id: 'Competent',  placeholder: 'Competent looks like...', label: 'Level C' },
+    { id: 'Proficient',  placeholder: 'Proficient looks like...', label: 'Level D' },
+    { id: 'Exemplary', placeholder: 'Exemplary looks like...', label: 'Level E' }
+  ];
+
+  createTextareaGroup(learningTargetElement, `objective${objectiveCount}`, '', inputGroupOptions);
+  objectiveCount++;
+}
+let questionCount = 4;
+function createQuestionOnClick(){
+  createTextarea(planElement, `question ${questionCount}`, '', `Question ${questionCount}`);
+  questionCount++;
+}
+
+createTextareaOnClick();
+createTextarea(assessmentElement, 'who_is_the_learner','First-year med student', 'Who is the learner?');
+createTextarea(assessmentElement, 'Student-facing goal statement', 'Get the correct diagnosis...', 'Student-facing goal statement:');
+
+const storyElement = document.getElementById('storyContent');
+const patientGroupOptions = [
+  { id: 'name', placeholder: 'Patient Name', label: 'Name:' },
+  { id: 'preferedName', placeholder: 'Prefered Name', label: 'Prefered Name:' },
+  { id: 'preferedPronouns', placeholder: '', label: 'Pronouns:*' },
+  { id: 'age', placeholder: 'For example, the patient is 5 weeks or the patient is 32 years old...', label: 'Patient Age:' },
+  { id: 'sex', placeholder: 'female', label: 'Sex at birth:' },
+  { id: 'message', placeholder: 'Sarah is a 14 year old female who woke up with abdominal pain...', label: 'Description/Context:' },
+  { id: 'additionalFamilyActors', placeholder: 'The patient is accompanied by their seeing eye dog and their parent who has legal custody...', label: 'Relevant Family/Friends Present at Visit:' },
+  { id: 'status', placeholder: 'The patient is alert and oriented...', label: 'Patient Status:' },
+  { id: 'temperment', placeholder: 'The patient is distrustful of medical providers...', label: 'Patient Temperment:*' },
+  { id: 'physicalDisability', placeholder: 'The patient is legally blind...', label: 'Physical Disabilities:' },
+  { id: 'IntelectualDisability', placeholder: 'The patient has Down Syndrome...', label: 'Intelectual Disabilities:' }
+
+];
+createTextareaGroup(storyElement, 'patientData', 'Describe the patient:', patientGroupOptions);
+
+const settingOptions = [
+    { value: 'OutpatientClinic', text: 'Outpatient Clinic' },
+    { value: 'Inpatient', text: 'Inpatient' },
+    { value: 'EmergencyRoom', text: 'ER' },
+    { value: 'FirstResponder', text: 'First Responder/Rescue' }
+    //need to insert logic to get this to skip to a new section if option 4 is chosen.
+];
+createDropdown(storyElement, 'settingDropdown', 'setting', 'text', 'Setting:', settingOptions);
+
+createTextarea(storyElement, 'Reason_for_visit', 'Patient complains of chest pain and...', 'Reason for visit or chief complaint/concern:');
+createTextarea(storyElement, 'History_of_Present_Illness', 'The patient complains of persistant chest pain lasting 2 hours... Consider the OLDCARTS mnemonic and any other pertinent information.', 'History of Present Illness:*', rows = 10,);
+
+const heentReviewOfSymptomsGroupOptions = [
+    { id: 'general', placeholder: 'For all of the following, please add into the boxes anything not listed in the check boxes. None of these will be revealed unless asked about by the learner.', label: 'General/Constitutional:',  checkboxes: [
+      { value: 'weight gain', text: 'Any recent weight gain?' },
+      { value: 'weight loss', text: 'Any recent weight loss?' },
+      { value: 'fever', text: 'Fever?' },
+      { value: 'chills', text: 'Chills?' },
+      { value: 'night sweats', text: 'Night Sweats?' },
+      { value: 'fatigue', text: 'Any fatigue?' },
+    ]
+  }, 
+    { id: 'head', placeholder: '', label: 'Head:', checkboxes: [
+      { value: 'headaches', text: 'Any headaches?' },
+    ]
+  },
+    { id: 'eyes', placeholder: '', label: 'Eyes:', checkboxes: [
+      { value: 'changes in vision', text: 'Changes in vision?' },
+      { value: 'loss of vision', text: 'Loss of vision?' },
+      { value: 'eye pain', text: 'Eye pain?' },
+      { value: 'eye irritation', text: 'Eye irritation?' },
+      { value: 'light sensitivity', text: 'Light Sensitivity?' },
+    ]},
+    { id: 'ears', placeholder: '', label: 'Ears:', checkboxes: [
+      { value: 'changes in hearing', text: 'Changes in hearing?' },
+      { value: 'loss of hearing', text: 'Loss of hearing?' },
+      { value: 'ear ringing', text: 'Ear ringing?' },
+      { value: 'ear pain', text: 'Ear pain?' },
+    ]},
+    { id: 'nose', placeholder: '', label: 'Nose:', checkboxes: [
+      { value: 'nasal congestion', text: 'Congestion?' },
+      { value: 'runny nose', text: 'Runny nose?' },
+      { value: 'sinus pain', text: 'Sinus pain?' },
+    ]},
+    { id: 'throat', placeholder: '', label: 'Throat:' , checkboxes: [
+      { value: 'sore throat', text: 'Sore throat?' },
+      { value: 'hoarseness', text: 'Hoarseness?' },
+      { value: 'difficulty swallowing', text: 'Difficulty swallowing?' },
+    ]},
+    { id: 'neck', placeholder: '', label: 'Neck:' , checkboxes: [
+      { value: 'neck pain', text: 'Neck pain?' },
+      { value: 'neck swelling', text: 'Swelling?' },
+    ]},
+    { id: 'respiratory', placeholder: '', label: 'Respiratory:' , checkboxes: [
+      { value: 'cough', text: 'Cough?' },
+      { value: 'wheezing', text: 'Wheezing?' },
+      { value: 'shortness of breath', text: 'Shortness of breath?' },
+      { value: 'history of asthma', text: 'History of asthma?' },
+      { value: 'history of COPD', text: 'History of COPD?' },
+    ]},
+    { id: 'cardiovascular', placeholder: '', label: 'Cardiovascular:' , checkboxes: [
+      { value: 'chest pain', text: 'Chest pain?' },
+      { value: 'palpitations', text: 'Palpitations?' },
+      { value: 'chest pressure', text: 'Pressure?' },
+      { value: 'swelling legs or ankles', text: 'Swelling?' },
+      { value: 'high blood pressure', text: 'High blood pressure?' },
+      { value: 'history of MI', text: 'History of MI?' },
+      { value: 'history of stroke', text: 'History of stroke?' },
+    ]},
+    { id: 'gastrointestinal', placeholder: '', label: 'Gastrointestinal:' , checkboxes: [
+      { value: 'nausea', text: 'Nausea?' },
+      { value: 'vomiting', text: 'Vomiting?' },
+      { value: 'abdominal pain', text: 'Abdominal pain?' },
+      { value: 'diarrhea', text: 'Diarrhea?' },
+      { value: 'constipation', text: 'Constipation?' },
+      { value: 'blood in stool', text: 'Blood in the stool?' },
+      { value: 'heartburn', text: 'Heartburn?' },
+    ]},
+    { id: 'genitourinary', placeholder: '', label: 'Genitourinary:' , checkboxes: [
+      { value: 'urinary frequency', text: 'Frequency?' },
+      { value: 'urinary frgency', text: 'Urgency?' },
+      { value: 'urinary hesitancy', text: 'Hesitancy?' },
+      { value: 'blood in urine', text: 'Blood in the urine?' },
+      { value: 'pain with urination', text: 'Pain with urination?' },
+      { value: 'genital pain', text: 'Genital pain?' },
+      { value: 'changes in menstrual cycle', text: 'Changes in menstraul cycle?' },
+    ]},
+    { id: 'musculoskeletal', placeholder: '', label: 'Musculoskeletal:' , checkboxes: [
+      { value: 'bone pain', text: 'Bone pain?' },
+      { value: 'joint pain', text: 'Joint pain?' },
+      { value: 'muscle pain', text: 'Muscle pain?' },
+      { value: 'muscle cramping', text: 'Muscle cramping?' },
+      { value: 'muscle weakness', text: 'Muscle weakness?' },
+      { value: 'back pain', text: 'Back pain?' },
+      { value: 'limited range of motion', text: 'Limited range of motion?' },
+    ]},
+    { id: 'derm', placeholder: '', label: 'Derm:' , checkboxes: [
+      { value: 'changes in skin', text: 'Skin changes?' },
+      { value: 'rashes', text: 'Rashes?' },
+      { value: 'itching', text: 'Itching?' },
+      { value: 'wounds', text: 'Wounds or sores?' },
+      { value: 'skin lesions', text: 'Skin lesions?' },
+    ]},
+    { id: 'neurological', placeholder: '', label: 'Neurological:' , checkboxes: [
+      { value: 'dizziness', text: 'Dizziness?' },
+      { value: 'numbness', text: 'Numbness?' },
+      { value: 'tingling', text: 'Tingling?' },
+      { value: 'weakness', text: 'Weakness?' },
+      { value: 'seizures', text: 'Seizures?' },
+      { value: 'tremors', text: 'Tremors?' },
+      { value: 'changes in memory', text: 'Changes in memory?' },
+      { value: 'difficulty with concentration', text: 'Difficulty concentrating?' },
+      { value: 'difficulty with coordination', text: 'Difficulty with coordination?' },
+    ]},
+    { id: 'psychiatric', placeholder: '', label: 'Psychiatric:' , checkboxes: [
+      { value: 'changes in mood', text: 'Changes in mood?' },
+      { value: 'depression', text: 'Depression?' },
+      { value: 'anxiety', text: 'Anxiety?' },
+      { value: 'changes in sleep', text: 'Changes in sleep?' },
+      { value: 'suicidal ideation', text: 'Suicidal?' },
+    ]},
+    { id: 'endocrine', placeholder: '', label: 'Endocrine:' , checkboxes: [
+      { value: 'changes in appetite', text: 'Changes in appetite?' },
+      { value: 'excessive thirst', text: 'Excessive thirst?' },
+      { value: 'excessive urination', text: 'Excessive urination?' },
+      { value: 'history of thyroid disorders', text: 'History of thyroid disorders?' },
+      { value: 'history of diabetes', text: 'History of diabetes?' },
+      { value: 'heat or cold intolerance', text: 'Heat or cold intolerance?' },
+    ]},
+    { id: 'hematologic', placeholder: '', label: 'Hematologic:', checkboxes: [
+      { value: 'bruising', text: 'Bruising?' },
+      { value: 'bleeding', text: 'Bleeding?' },
+      { value: 'history of anemia', text: 'History of anemia?' },
+      { value: 'clotting disorders', text: 'Clotting disorders?' },
+      { value: 'swollen lymph nodes', text: 'Swollen lymph nodes?' },
+    ]},
+    { id: 'allergic/immunologic', placeholder: '', label: 'Allergic/Immunologic:', checkboxes: [
+      { value: 'food allergies', text: 'Food allergies? (list above)' },
+      { value: 'drug allergies', text: 'Drug allergies? (list above)' },
+      { value: 'frequent infections', text: 'Frequent infections?' },
+    ]}
+];
+createTextareaGroup(storyElement, 'patientData', 'Review of Systems: These will be revealed by the patient if asked by the learner.  (include pertinent positives and negatives)*', heentReviewOfSymptomsGroupOptions);
+
+//createTextarea(storyElement, 'Pertinent_patient_background', 'The patient works at...', 'Pertinent patient background:');
+const socialGroupOptions = [
+    { id: 'past_medical',  placeholder: '', label: 'Past Medical History:*' },
+    { id: 'family_medical_history', placeholder: '', label: 'Family Medical History:*' },
+    { id: 'social_history', placeholder: '', label: 'Social History:*' },
+    { id: 'social_determinants', placeholder: '', label: 'Social Determinants:*' },
+    { id: 'medications', placeholder: '', label: 'Medications:*' },
+    { id: 'allergic', placeholder: '', label: 'Allergies:*' }
+]
+createTextareaGroup(storyElement, 'historyQuestions', 'Patient History:*', socialGroupOptions);
+
+//crate the story details
+const factsElement = document.getElementById('factsContent');
+
+//createTextarea(factsElement, 'Physical_exam', '', 'Physical Exam Findings:*');
+const physicalExamGroupOptions = [
+    { id: 'vitals', placeholder: 'Include temperature, heart rate, blood pressure, respiratory rate, oxygen saturation', label: 'Vitals:' },
+    //{ id: 'headPE', type: 'text', placeholder: '', label: 'Head:' },
+    { id: 'generalPE', placeholder: 'Well-appearing female, NAD, pleasant...', label: 'General appearance:' },
+    { id: 'HEENTPE', placeholder: 'Atraumatic, PERRL, EOM\'s intact, sinuses NT, oropharynx clear, no erythema or mucosal ulcerations noted...', label: 'HEENT:' },
+    { id: 'lungsPE', placeholder: 'Lungs CTA bilaterally, no wheezes, no rales or rhonchi noted...', label: 'Lungs:' },
+    { id: 'heartPE', placeholder: 'RRR, no murmurs noted...', label: 'Heart:' },
+    { id: 'abdomenPE', placeholder: 'Soft, NT, ND, NABS throughout...', label: 'Abdomen:' },
+    //{ id: 'genitourinaryPE', placeholder: '', label: 'Genitourinary:' },
+    { id: 'extremitiesPE', placeholder: 'MAE\'s x 4, strength equal bilaterally...', label: 'Extremities:' },
+    { id: 'lymphNodesPE', placeholder: 'no LAD in cervical, supraclavicular, axillary or inguinal nodes...', label: 'Lymph nodes:' },
+    { id: 'skinPE', placeholder: 'no rashes or lesions noted. No c/c/e...', label: 'Skin:' },
+    { id: 'neuroPE', placeholder: 'CN II-XII grossly intact, + sensation to light touch, A & O x3... ', label: 'Neuro:' },
+    { id: 'otherPE', placeholder: 'anything not listed...', label: 'Other:' }
+];
+createTextareaGroup(factsElement, 'physicalExamData', 'Physical Exam Findings: (include pertinent positives and negatives)*', physicalExamGroupOptions);
+
+createTextarea(factsElement, 'Data', 'Specify every abnormal test, specify the name and abnormal values or results, all other tests will be populated with typical values or results unless specified here.', 'Notable Data: (laboratory/imaging results)*', rows=12);
+
+//crate the story details
+const planElement = document.getElementById('planContent');
+createTextarea(planElement, 'Diagnosis', 'Chronic Myeloid Leukemia', 'Diagnosis (dx):*', rows=5);
+createTextarea(planElement, 'Addition_diagnosis',  '', 'Differential diagnoses:*', rows=5);
+createTextarea(planElement, 'Treatment', '', 'Treatment/Intervention:*', rows = 5);
+createTextarea(planElement, 'Plan',  '', 'Assessment/Plan:*', rows=5);
+
+const followupQuestions = [
+    { id: 'question1', placeholder: 'What would happen if...', label: 'Question 1' },
+    { id: 'question2', placeholder: 'You find out the patient has...', label: 'Question 2' },
+    { id: 'question3', placeholder: 'After 6 weeks of treatment...', label: 'Question 3' }
+];
+createTextareaGroup(planElement, 'followUpQuestions', 'Questions following the scenerio:', followupQuestions);
+
+/*
+createTextareaGroup(planElement, 'group1', 'Please provide your response:', [
+  {
+    id: 'textarea1',
+    placeholder: 'Enter your response here...',
+    label: 'Response 1',
+    checkboxes: [
+      { value: 'option1', text: 'Option 1' },
+      { value: 'option2', text: 'Option 2' },
+      { value: 'option3', text: 'Option 3' }
+    ]
+  },
+  {
+    id: 'textarea2',
+    placeholder: 'Enter another response here...',
+    label: 'Response 2'
+  }
+]);
+
+*/
+/*
+//create the story details
+const rubricElement = document.getElementById('rubricContent');
+
+  // Create a checkbox group
+  const rubricPoints = [
+    { value: 'hpi', text: 'Adequately obtained HPI and extrapolated key information.' },
+    { value: 'medical_socail_family_history', text: 'Adequately obtained accurate medical/social and family history.' },
+    { value: 'medication', text: 'Adequately obtained medication (including non-prescribed).' },
+    { value: 'allergies', text: 'Adequately obtained and assessed allergies and severity.' },
+    { value: 'physical_exam', text: 'Performed physical exam.' },
+    { value: 'key_findings', text: 'Elicited key exam findings (both +/-).' },
+    { value: 'workup', text: 'Ordered appropriate diagnostic work-up.' },
+    { value: 'diagnostic_findings', text: 'Elicited key diagnostic findings (both +/-).' },
+    { value: 'addressed_concerns', text: 'Prioritized and addressed concerns/findings.' },
+    { value: 'correct_diagnosis', text: 'Formulated the correct diagnosis and considered appropriate differential diagnoses.' },
+    { value: 'treatment_plan', text: 'Formulated assessment and treatment plan.' },
+    { value: 'treatment_intervention', text: 'Adequately provided appropriate treatment/intervention.' },
+    { value: 'patient_education', text: 'Provided patient education and answered/addressed patient questions.' },
+    { value: 'closed_the_loop', text: 'Closed the loop.' }
+    
+];
+createCheckboxGroup(rubricElement, 'purpose', 'How did the learner do:', rubricPoints);
+
+createTextarea(rubricElement, 'create_your_own',  'Add in anything not mentioned above that is important for this scenario...', 'Create your own:', rows=5);
+*/
+/*
+function generateTxtFile() {
+  const formData = new FormData(document.getElementById('scenarioForm'));
+  let fileContent = '';
+
+  for (const [key, value] of formData.entries()) {
+    fileContent += `${key}: ${value}\n\n`;
+  }
+
+  const blob = new Blob([fileContent], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.download = 'form-data.txt';
+  link.href = url;
+  link.click();
+}
+
+const form = document.getElementById('scenarioForm');
+form.addEventListener('submit', (event) => {
+  event.preventDefault();
+  generateTxtFile();
+});
+*/
+function generateJSONFile() {
+  const formData = new FormData(document.getElementById('scenarioForm'));
+  const jsonData = {};
+
+  // Get the value of the 'fileName' input field
+  const fileNameInput = document.getElementById('fileName');
+  let fileName = fileNameInput.value.trim();
+
+  // Check if the fileName input is empty
+  if (fileName === '') {
+    alert('Please enter a file name.');
+    fileNameInput.focus();
+    return;
+  }
+
+  fileName += '.json';
+
+  for (const [key, value] of formData.entries()) {
+    if (value instanceof File) {
+      // Handle file inputs separately
+      jsonData[key] = value.name;
+    } else if (key.includes('[]')) {
+      // Handle checkbox groups
+      const groupName = key.replace('[]', '');
+      if (!jsonData[groupName]) {
+        jsonData[groupName] = [];
+      }
+      jsonData[groupName].push(value);
+    } else {
+      jsonData[key] = value;
+    }
+  }
+
+  const blob = new Blob([JSON.stringify(jsonData, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement('a');
+  link.download = fileName;
+  link.href = url;
+  link.click();
+}
+
+const formjson = document.getElementById('scenarioForm');
+formjson.addEventListener('submit', (event) => {
+  event.preventDefault();
+  generateJSONFile();
+});
+
+/*
+function sendFormDataToServer(formData) {
+  const requestOptions = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(formData)
+  };
+
+  fetch('https://YOUR_REGION-YOUR_PROJECT_ID.cloudfunctions.net/sendFormEmail', requestOptions)
+    .then(response => {
+      if (response.ok) {
+        console.log('Email sent successfully!');
+      } else {
+        console.error('Failed to send email.');
+      }
+    })
+    .catch(error => {
+      console.error('Error occurred while sending email:', error);
+    });
+}
+*/
+  </script>
+</body>
+</html>
