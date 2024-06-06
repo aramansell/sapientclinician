@@ -50,6 +50,10 @@ function init() {
         if (actorsNames['Observer']) {
             document.querySelector("#people > option[value='']").outerHTML = '';
         }
+
+        if (actorsNames['Action']) {
+            document.querySelector("#people > option[value='']").outerHTML = '';
+        }
         
 
         questions = questionsText.split('\n').filter(q => q.length > 0).map(a => a.trim());
@@ -192,7 +196,7 @@ function downloadTxtFile() {
         // Check if we've reached the end of the array
         if (currentQuestionIndex >= questions.length) {
         currentQuestionIndex = 0; // Reset to the beginning
-        alert("You've completed the assessment, be sure to click Finish Exam before closing window!");
+        alert("You've completed the assessment, be sure to click End Scenario before closing window!");
         } else {
         displayQuestion();
         }
